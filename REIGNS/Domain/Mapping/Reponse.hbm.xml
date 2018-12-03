@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="Reponse" table="reponse">
+    <id name="Id" column="rep_id" type="int">
+      <generator class="native"></generator>
+    </id>
+    <property name="Text" column="rep_txt" not-null="true"/>
+    <property name="EffetSante" column="rep_sante" not-null="true"/>
+    <property name="EffetSous" column="rep_sous" not-null="true"/>
+    <property name="EffetScolaire" column="rep_sco" not-null="true"/>
+    <property name="EffetSocial" column="rep_soc" not-null="true"/>
+    <property name="CarteSuivante" column="rep_carte_suivante" />
+    <property name="ChgtObjet" column="rep_obj" />
+    <property name="ChgtEffet" column="rep_effet" />
+    <property name="FaitId" column="rep_fait"/>
+    <property name="MortId" column="rep_mort" />
+  </class>
+
+</hibernate-mapping>

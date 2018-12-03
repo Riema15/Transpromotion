@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="Objet" table="objet">
+    <id name="Id" column="obj_id" type="int">
+      <generator class="native"></generator>
+    </id>
+    <property name="Nom" column="obj_nom" not-null="true"/>
+    <property name="Image" column="obj_image" />
+    <property name="Actif" column="obj_actif" not-null="true"/>
+
+  </class>
+
+</hibernate-mapping>

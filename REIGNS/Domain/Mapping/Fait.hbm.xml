@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">H:\2A\transpromo\Transpromotion\REIGNS\Domain\Fait.cs
+
+  <class name="Fait" table="fait">
+    <id name="Id" column="f_id" type="int">
+      <generator class="native"></generator>
+    </id>
+    <property name="Nom" column="f_nom" not-null="true"/>
+    <property name="Description" column="f_desc" not-null="true"/>
+    <property name="Actif" column="f_actif" not-null="true"/>
+
+  </class>
+
+</hibernate-mapping>

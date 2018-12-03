@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="Carte" table="carte">
+    <id name="Id" column="carte_id" type="int">
+      <generator class="native"></generator>
+    </id>
+    <property name="Text" column="carte_txt" not-null="true"/>
+    <property name="ObjetPossible" column="carte_obj" not-null="true"/>
+
+    <bag name="Personnage" cascade="all" lazy="true">
+      <key column="part_id"/>
+      <one-to-one class="personnage"/>
+    </bag>
+    <bag name="Personnage" cascade="all" lazy="true">
+      <key column="part_id"/>
+      <one-to-one class="personnage"/>
+    </bag>
+    <bag name="Rep1" cascade="all" lazy="true">
+      <key column="rep_id"/>
+      <one-to-one class="reponse"/>
+    </bag>
+    <bag name="Rep2" cascade="all" lazy="true">
+      <key column="rep_id"/>
+      <one-to-one class="reponse"/>
+    </bag>
+
+  </class>
+
+</hibernate-mapping>

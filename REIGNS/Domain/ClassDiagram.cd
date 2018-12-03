@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Domain.Objet">
+    <Position X="1" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAACAAAAAAACAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Effet">
+    <Position X="1" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAEAAAAACCAIAAAACAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Effet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Partie">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <AssociationLine Name="Cartes" Type="Domain.Carte" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="3.72" />
+        <Point X="8.75" Y="3.72" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Objets" Type="Domain.Objet" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="3.75" />
+        <Point X="5.058" Y="3.75" />
+        <Point X="5.058" Y="3.824" />
+        <Point X="2.062" Y="3.824" />
+        <Point X="2.062" Y="3.632" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAACgAAAAAAAAAAIAABAgACAAAAAAAAIAQAEAAA=</HashCode>
+      <FileName>Partie.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="VieActuelle" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Faits" />
+      <Property Name="Morts" />
+      <Property Name="Cartes" />
+      <Property Name="Effets" />
+      <Property Name="Objets" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Domain.Fait">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAACAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Fait.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Mort">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAACAAAAAAACAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Carte">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Rep1" Type="Domain.Reponse" FixedFromPoint="true">
+      <Path>
+        <Point X="9.938" Y="4.69" />
+        <Point X="9.938" Y="6" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Rep2" Type="Domain.Reponse" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="4.582" />
+        <Point X="10.875" Y="4.582" />
+        <Point X="10.875" Y="6" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAMAAAAAAAASAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Carte.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Personnage" />
+      <Property Name="Rep1" />
+      <Property Name="Rep2" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.Personnage">
+    <Position X="12" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAIAAABAACAAAAAAAAAABAAgAAAAAAAAAA=</HashCode>
+      <FileName>Personnage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Reponse">
+    <Position X="9.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAIAAAgEAAABAACAIAAAAAAAEAAAAAAgCAAAAAA=</HashCode>
+      <FileName>Reponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Cycle">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <AssociationLine Name="CartesScenario" Type="Domain.Carte" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="8.249" />
+        <Point X="9.125" Y="8.249" />
+        <Point X="9.125" Y="4.69" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAEiAQAAAAAAAAAACAAABAAAEAAAAACAEA=</HashCode>
+      <FileName>Cycle.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CartesScenario" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
