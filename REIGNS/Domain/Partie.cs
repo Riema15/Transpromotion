@@ -22,11 +22,15 @@ namespace Domain
 
         public Cycle VieActuelle { get; set; }
 
-        public IList<Domain.Carte> Cartes { get; set; }
 
         public IList<Domain.Objet> Objets { get; set; }
 
-        public IList<Domain.Effet> Effets { get; set; }
+
+
+        public IList<Domain.Carte> CartesEvent { get; set; }
+
+        public IList<Domain.Carte> CartesNoEvent { get; set; }
+        public IList<Domain.Carte> CartesSpeciales { get; set; }
 
         public Partie()
         {
@@ -36,8 +40,10 @@ namespace Domain
             Morts = new List<Mort>();
             VieActuelle = new Cycle();
             Objets = new List<Objet>();
-            Effets = new List<Effet>();
-            Cartes = new List<Carte>();
+
+            CartesEvent = new List<Carte>();
+            CartesNoEvent = new List<Carte>();
+            CartesSpéciales = new List<Carte>();
         }
         
 

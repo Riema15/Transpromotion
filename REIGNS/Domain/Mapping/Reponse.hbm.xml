@@ -17,6 +17,7 @@
     <property name="ChgtEffet" column="rep_effet" />
     <property name="FaitId" column="rep_fait"/>
     <property name="MortId" column="rep_mort" />
+    <property name="CarteAVenir" column="rep_carte_avenir" />
   </class>
 
 </hibernate-mapping>

@@ -8,6 +8,7 @@ namespace Domain
     public class Reponse
     {
         public virtual int Id { get; set; }
+
         public virtual string Text { get; set; }
 
         public virtual int EffetSante { get; set; }
@@ -21,11 +22,14 @@ namespace Domain
         public virtual int CarteSuivante { get; set; }
 
         public virtual string ChgtObjet { get; set; }
+
         public virtual string ChgtEffet { get; set; }
 
         public virtual int FaitId { get; set; }
 
         public virtual int MortId { get; set; }
+
+        public virtual int CarteAVenir {get; set;}
 
         public Reponse() { }
 

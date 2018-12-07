@@ -7,9 +7,24 @@ using Domain;
 
 namespace DAL
 {
-    class CarteRepository : Repository
+    public class CarteRepository : Repository
     {
         public IList<Carte> GetAll()
+        {
+            return Session.Query<Carte>().ToList();
+        }
+
+        public IList<Carte> GetCarteEvent()
+        {
+            return Session.Query<Carte>().ToList();
+        }
+
+        public IList<Carte> GetCarteNotEvent()
+        {
+            return Session.Query<Carte>().ToList();
+        }
+
+        public IList<Carte> GetCartesSpeciales()
         {
             return Session.Query<Carte>().ToList();
         }
