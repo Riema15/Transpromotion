@@ -7,12 +7,28 @@ namespace Domain
 {
     public class Cycle
     {
-        private bool badgeAbime;
-        private bool Ami;
-        private int refusRepasFamille;
-        private int formationJE;
+        public bool BadgeAbime { get; set; }
+        public bool Ami { get; set; }
+        public bool OrganiserRepasFamille { get; set; }
+        public int FormationJE { get; set; }
 
-        private List<string> listeNom = new List<string> { "Mathieu", "Pierre", "Tim" };
+
+        public void MettreVraiBoolCycle(int numBoolEnQuestion)
+        {
+            if (numBoolEnQuestion==1) { BadgeAbime = true; }
+            else if (numBoolEnQuestion == 2) { Ami = true; }
+            else if (numBoolEnQuestion == 3) { OrganiserRepasFamille = true; }
+            else if (numBoolEnQuestion == 4) { FormationJE++; }
+        }
+
+        public void MettreFauxBoolCycle(int numBoolEnQuestion)
+        {
+            if (numBoolEnQuestion == 1) { BadgeAbime = false; }
+            else if (numBoolEnQuestion == 2) { Ami = false; }
+            else if (numBoolEnQuestion == 3) { OrganiserRepasFamille = false; }
+        }
+
+        private List<string> listeNom = new List<string> { "Mathieu", "Pierre", "Tim", "Félix" };
 
         private Random alea = new Random();
 
@@ -27,8 +43,7 @@ namespace Domain
         public int NbJour { get; set; }
 
         public string Nom { get; set; }
-
-
+        
 
         public IList<Domain.Effet> Effets { get; set; }
 
@@ -40,12 +55,13 @@ namespace Domain
             JaugeSous = 50;
             NbJour = 0;
             Nom = listeNom[alea.Next(0, listeNom.Count())];
-            badgeAbime = false;
-            formationJE = 0;
+            BadgeAbime = false;
+            FormationJE = 0;
             Ami = false;
-            refusRepasFamille = 0;
+            OrganiserRepasFamille = true;
             Effets = new List<Effet>();
         }
 
+        
     }
 }

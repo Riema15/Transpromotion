@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="Evenement" table="evenement">
+    <id name="Id" column="event_id" type="int">
+      <generator class="native"></generator>
+    </id>
+    <property name="Nom" column="event_nom" not-null="true"/>
+    <property name="JourHappen" column="event_jour" not-null="true"/>
+    <property name="NbCarteTirer" column="event_nbjour" not-null="true"/>
+
+    <bag name="CartesConcernees" cascade="all" lazy="true">
+      <key column="event_id"/>
+      <one-to-many class="carte"/>
+    </bag>
+
+  </class>
+  
+</hibernate-mapping>

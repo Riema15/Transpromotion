@@ -7,6 +7,8 @@ namespace Domain
 {
     public class Carte
     {
+
+
         public virtual Personnage Personnage { get; set; }
      
 
@@ -19,8 +21,10 @@ namespace Domain
         public virtual string Text { get; set; }
 
         // objet possibles est un string de type"3,4" pour l'indiquer l'objet d'id 3 sur cette carte amène la carte 4
-        public virtual string ObjetPossible { get; set; }
+        public virtual int ObjetPossible { get; set; }
         
+        public virtual int NumEvent { get; set; }
+
         public Carte() { }
     }
 }

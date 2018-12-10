@@ -18,6 +18,7 @@
     <property name="FaitId" column="rep_fait"/>
     <property name="MortId" column="rep_mort" />
     <property name="CarteAVenir" column="rep_carte_avenir" />
+    <property name="BoolCycle" column="rep_cycle" />
   </class>
 
 </hibernate-mapping>

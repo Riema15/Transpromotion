@@ -31,6 +31,8 @@ namespace Domain
 
         public virtual int CarteAVenir {get; set;}
 
+        public virtual string BoolCycle { get; set; }
+
         public Reponse() { }
 
     }

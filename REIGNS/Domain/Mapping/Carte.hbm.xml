@@ -10,6 +10,8 @@
     </id>
     <property name="Text" column="carte_txt" not-null="true"/>
     <property name="ObjetPossible" column="carte_obj" not-null="true"/>
+    <property name="NumEvent" column="carte_num_event" not-null="true"/>
+
 
     <bag name="Personnage" cascade="all" lazy="true">
       <key column="part_id"/>

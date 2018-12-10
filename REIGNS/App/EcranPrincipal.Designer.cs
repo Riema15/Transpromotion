@@ -51,8 +51,24 @@
             this.btnObjet3 = new System.Windows.Forms.Button();
             this.btnObjet7 = new System.Windows.Forms.Button();
             this.btnObjet6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtNouveauFait = new System.Windows.Forms.Label();
+            this.imPlusSante = new System.Windows.Forms.PictureBox();
+            this.imMoinsSante = new System.Windows.Forms.PictureBox();
+            this.imMoinsSocial = new System.Windows.Forms.PictureBox();
+            this.imPlusSocial = new System.Windows.Forms.PictureBox();
+            this.imMoinsScolaire = new System.Windows.Forms.PictureBox();
+            this.imPlusScolaire = new System.Windows.Forms.PictureBox();
+            this.imMoinsSous = new System.Windows.Forms.PictureBox();
+            this.imPlusSous = new System.Windows.Forms.PictureBox();
             this.txtNomPerso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSocial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSocial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsScolaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusScolaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSous)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSous)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNomPerso
@@ -78,7 +94,7 @@
             // 
             this.txtSante.AutoSize = true;
             this.txtSante.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSante.Location = new System.Drawing.Point(80, 94);
+            this.txtSante.Location = new System.Drawing.Point(74, 94);
             this.txtSante.Name = "txtSante";
             this.txtSante.Size = new System.Drawing.Size(67, 20);
             this.txtSante.TabIndex = 1;
@@ -88,7 +104,7 @@
             // 
             this.valSante.AutoSize = true;
             this.valSante.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valSante.Location = new System.Drawing.Point(153, 90);
+            this.valSante.Location = new System.Drawing.Point(147, 90);
             this.valSante.Name = "valSante";
             this.valSante.Size = new System.Drawing.Size(20, 24);
             this.valSante.TabIndex = 2;
@@ -98,7 +114,7 @@
             // 
             this.valSocial.AutoSize = true;
             this.valSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valSocial.Location = new System.Drawing.Point(299, 90);
+            this.valSocial.Location = new System.Drawing.Point(293, 90);
             this.valSocial.Name = "valSocial";
             this.valSocial.Size = new System.Drawing.Size(20, 24);
             this.valSocial.TabIndex = 4;
@@ -108,7 +124,7 @@
             // 
             this.txtSocial.AutoSize = true;
             this.txtSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSocial.Location = new System.Drawing.Point(226, 94);
+            this.txtSocial.Location = new System.Drawing.Point(220, 94);
             this.txtSocial.Name = "txtSocial";
             this.txtSocial.Size = new System.Drawing.Size(70, 20);
             this.txtSocial.TabIndex = 3;
@@ -118,7 +134,7 @@
             // 
             this.valScolaire.AutoSize = true;
             this.valScolaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valScolaire.Location = new System.Drawing.Point(463, 90);
+            this.valScolaire.Location = new System.Drawing.Point(457, 90);
             this.valScolaire.Name = "valScolaire";
             this.valScolaire.Size = new System.Drawing.Size(20, 24);
             this.valScolaire.TabIndex = 6;
@@ -128,7 +144,7 @@
             // 
             this.txtScolaire.AutoSize = true;
             this.txtScolaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScolaire.Location = new System.Drawing.Point(385, 94);
+            this.txtScolaire.Location = new System.Drawing.Point(379, 94);
             this.txtScolaire.Name = "txtScolaire";
             this.txtScolaire.Size = new System.Drawing.Size(85, 20);
             this.txtScolaire.TabIndex = 5;
@@ -138,7 +154,7 @@
             // 
             this.valSous.AutoSize = true;
             this.valSous.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valSous.Location = new System.Drawing.Point(608, 90);
+            this.valSous.Location = new System.Drawing.Point(602, 90);
             this.valSous.Name = "valSous";
             this.valSous.Size = new System.Drawing.Size(20, 24);
             this.valSous.TabIndex = 8;
@@ -148,7 +164,7 @@
             // 
             this.txtSous.AutoSize = true;
             this.txtSous.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSous.Location = new System.Drawing.Point(535, 94);
+            this.txtSous.Location = new System.Drawing.Point(529, 94);
             this.txtSous.Name = "txtSous";
             this.txtSous.Size = new System.Drawing.Size(62, 20);
             this.txtSous.TabIndex = 7;
@@ -162,6 +178,7 @@
             this.btnReponse1.TabIndex = 9;
             this.btnReponse1.Text = "ok1";
             this.btnReponse1.UseVisualStyleBackColor = true;
+            this.btnReponse1.Click += new System.EventHandler(this.btnReponse1_Click);
             // 
             // btnReponse2
             // 
@@ -171,6 +188,7 @@
             this.btnReponse2.TabIndex = 10;
             this.btnReponse2.Text = "ok2";
             this.btnReponse2.UseVisualStyleBackColor = true;
+            this.btnReponse2.Click += new System.EventHandler(this.btnReponse2_Click);
             // 
             // txtNomCycle
             // 
@@ -204,83 +222,157 @@
             // 
             // btnObjet0
             // 
-            this.btnObjet0.Location = new System.Drawing.Point(130, 400);
+            this.btnObjet0.Location = new System.Drawing.Point(16, 400);
             this.btnObjet0.Name = "btnObjet0";
-            this.btnObjet0.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet0.Size = new System.Drawing.Size(70, 41);
             this.btnObjet0.TabIndex = 14;
-            this.btnObjet0.Text = "O0";
             this.btnObjet0.UseVisualStyleBackColor = true;
             // 
             // btnObjet1
             // 
-            this.btnObjet1.Location = new System.Drawing.Point(192, 400);
+            this.btnObjet1.Location = new System.Drawing.Point(98, 400);
             this.btnObjet1.Name = "btnObjet1";
-            this.btnObjet1.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet1.Size = new System.Drawing.Size(69, 41);
             this.btnObjet1.TabIndex = 15;
-            this.btnObjet1.Text = "O1";
             this.btnObjet1.UseVisualStyleBackColor = true;
             // 
             // btnObjet2
             // 
-            this.btnObjet2.Location = new System.Drawing.Point(256, 400);
+            this.btnObjet2.Location = new System.Drawing.Point(180, 400);
             this.btnObjet2.Name = "btnObjet2";
-            this.btnObjet2.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet2.Size = new System.Drawing.Size(69, 41);
             this.btnObjet2.TabIndex = 16;
-            this.btnObjet2.Text = "O2";
             this.btnObjet2.UseVisualStyleBackColor = true;
             // 
             // btnObjet5
             // 
-            this.btnObjet5.Location = new System.Drawing.Point(439, 400);
+            this.btnObjet5.Location = new System.Drawing.Point(445, 400);
             this.btnObjet5.Name = "btnObjet5";
-            this.btnObjet5.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet5.Size = new System.Drawing.Size(69, 41);
             this.btnObjet5.TabIndex = 19;
-            this.btnObjet5.Text = "O5";
             this.btnObjet5.UseVisualStyleBackColor = true;
             // 
             // btnObjet4
             // 
-            this.btnObjet4.Location = new System.Drawing.Point(375, 400);
+            this.btnObjet4.Location = new System.Drawing.Point(356, 400);
             this.btnObjet4.Name = "btnObjet4";
-            this.btnObjet4.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet4.Size = new System.Drawing.Size(69, 41);
             this.btnObjet4.TabIndex = 18;
-            this.btnObjet4.Text = "O4";
             this.btnObjet4.UseVisualStyleBackColor = true;
             // 
             // btnObjet3
             // 
-            this.btnObjet3.Location = new System.Drawing.Point(313, 400);
+            this.btnObjet3.Location = new System.Drawing.Point(270, 400);
             this.btnObjet3.Name = "btnObjet3";
-            this.btnObjet3.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet3.Size = new System.Drawing.Size(69, 41);
             this.btnObjet3.TabIndex = 17;
-            this.btnObjet3.Text = "O3";
             this.btnObjet3.UseVisualStyleBackColor = true;
             // 
             // btnObjet7
             // 
-            this.btnObjet7.Location = new System.Drawing.Point(564, 400);
+            this.btnObjet7.Location = new System.Drawing.Point(612, 400);
             this.btnObjet7.Name = "btnObjet7";
-            this.btnObjet7.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet7.Size = new System.Drawing.Size(69, 41);
             this.btnObjet7.TabIndex = 21;
-            this.btnObjet7.Text = "O7";
             this.btnObjet7.UseVisualStyleBackColor = true;
             // 
             // btnObjet6
             // 
-            this.btnObjet6.Location = new System.Drawing.Point(500, 400);
+            this.btnObjet6.Location = new System.Drawing.Point(528, 400);
             this.btnObjet6.Name = "btnObjet6";
-            this.btnObjet6.Size = new System.Drawing.Size(43, 41);
+            this.btnObjet6.Size = new System.Drawing.Size(69, 41);
             this.btnObjet6.TabIndex = 20;
-            this.btnObjet6.Text = "O6";
             this.btnObjet6.UseVisualStyleBackColor = true;
             // 
-   
+            // txtNouveauFait
+            // 
+            this.txtNouveauFait.AutoSize = true;
+            this.txtNouveauFait.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtNouveauFait.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNouveauFait.ForeColor = System.Drawing.Color.DarkRed;
+            this.txtNouveauFait.Location = new System.Drawing.Point(294, 126);
+            this.txtNouveauFait.Name = "txtNouveauFait";
+            this.txtNouveauFait.Size = new System.Drawing.Size(92, 17);
+            this.txtNouveauFait.TabIndex = 22;
+            this.txtNouveauFait.Text = "Nouveau Fait";
+            // 
+            // imPlusSante
+            // 
+            this.imPlusSante.Location = new System.Drawing.Point(173, 80);
+            this.imPlusSante.Name = "imPlusSante";
+            this.imPlusSante.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSante.TabIndex = 23;
+            this.imPlusSante.TabStop = false;
+            // 
+            // imMoinsSante
+            // 
+            this.imMoinsSante.Location = new System.Drawing.Point(173, 105);
+            this.imMoinsSante.Name = "imMoinsSante";
+            this.imMoinsSante.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSante.TabIndex = 24;
+            this.imMoinsSante.TabStop = false;
+            // 
+            // imMoinsSocial
+            // 
+            this.imMoinsSocial.Location = new System.Drawing.Point(319, 99);
+            this.imMoinsSocial.Name = "imMoinsSocial";
+            this.imMoinsSocial.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSocial.TabIndex = 26;
+            this.imMoinsSocial.TabStop = false;
+            // 
+            // imPlusSocial
+            // 
+            this.imPlusSocial.Location = new System.Drawing.Point(319, 74);
+            this.imPlusSocial.Name = "imPlusSocial";
+            this.imPlusSocial.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSocial.TabIndex = 25;
+            this.imPlusSocial.TabStop = false;
+            // 
+            // imMoinsScolaire
+            // 
+            this.imMoinsScolaire.Location = new System.Drawing.Point(483, 99);
+            this.imMoinsScolaire.Name = "imMoinsScolaire";
+            this.imMoinsScolaire.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsScolaire.TabIndex = 28;
+            this.imMoinsScolaire.TabStop = false;
+            // 
+            // imPlusScolaire
+            // 
+            this.imPlusScolaire.Location = new System.Drawing.Point(483, 74);
+            this.imPlusScolaire.Name = "imPlusScolaire";
+            this.imPlusScolaire.Size = new System.Drawing.Size(20, 24);
+            this.imPlusScolaire.TabIndex = 27;
+            this.imPlusScolaire.TabStop = false;
+            // 
+            // imMoinsSous
+            // 
+            this.imMoinsSous.Location = new System.Drawing.Point(628, 99);
+            this.imMoinsSous.Name = "imMoinsSous";
+            this.imMoinsSous.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSous.TabIndex = 30;
+            this.imMoinsSous.TabStop = false;
+            // 
+            // imPlusSous
+            // 
+            this.imPlusSous.Location = new System.Drawing.Point(628, 74);
+            this.imPlusSous.Name = "imPlusSous";
+            this.imPlusSous.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSous.TabIndex = 29;
+            this.imPlusSous.TabStop = false;
             // 
             // EcranPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.imMoinsSous);
+            this.Controls.Add(this.imPlusSous);
+            this.Controls.Add(this.imMoinsScolaire);
+            this.Controls.Add(this.imPlusScolaire);
+            this.Controls.Add(this.imMoinsSocial);
+            this.Controls.Add(this.imPlusSocial);
+            this.Controls.Add(this.imMoinsSante);
+            this.Controls.Add(this.imPlusSante);
+            this.Controls.Add(this.txtNouveauFait);
             this.Controls.Add(this.btnObjet7);
             this.Controls.Add(this.btnObjet6);
             this.Controls.Add(this.btnObjet5);
@@ -307,6 +399,14 @@
             this.Size = new System.Drawing.Size(717, 474);
             this.txtNomPerso.ResumeLayout(false);
             this.txtNomPerso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSocial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSocial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsScolaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusScolaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSous)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSous)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,6 +437,14 @@
         private System.Windows.Forms.Button btnObjet3;
         private System.Windows.Forms.Button btnObjet7;
         private System.Windows.Forms.Button btnObjet6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label txtNouveauFait;
+        private System.Windows.Forms.PictureBox imPlusSante;
+        private System.Windows.Forms.PictureBox imMoinsSante;
+        private System.Windows.Forms.PictureBox imMoinsSocial;
+        private System.Windows.Forms.PictureBox imPlusSocial;
+        private System.Windows.Forms.PictureBox imMoinsScolaire;
+        private System.Windows.Forms.PictureBox imPlusScolaire;
+        private System.Windows.Forms.PictureBox imMoinsSous;
+        private System.Windows.Forms.PictureBox imPlusSous;
     }
 }
