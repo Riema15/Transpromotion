@@ -14,11 +14,7 @@
 
 
     <bag name="Personnage" cascade="all" lazy="true">
-      <key column="part_id"/>
-      <one-to-one class="personnage"/>
-    </bag>
-    <bag name="Personnage" cascade="all" lazy="true">
-      <key column="part_id"/>
+      <key column="pers_id"/>
       <one-to-one class="personnage"/>
     </bag>
     <bag name="Rep1" cascade="all" lazy="true">

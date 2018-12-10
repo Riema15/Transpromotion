@@ -18,7 +18,7 @@ namespace App
         private List<Carte> carteAVenir;
         private Random random = new Random();
         private List<Button> listeBtnObjet;
-
+        private List<Carte> cartesEvent;
   
         public EcranPrincipal()
         {
@@ -27,6 +27,7 @@ namespace App
             carteAVenir = new List<Carte>();
             txtNbJour.Text = 0.ToString();
             txtNomCycle.Text = Program.MaPartie.VieActuelle.Nom;
+            cartesEvent = new List<Carte>();
 
             carteActuelle = ChoisirCarte();
 
@@ -119,11 +120,15 @@ namespace App
 
         // Fonctions utiles
 
-        public void TestJaugeMort()
+        public void TestJaugeMort()/// A MODIF LA CARTE A AFFICHER
         {
             int x = Program.MaPartie.TestJaugeMort();
-            if (x != -1) { AfficherCarte((Program.MaPartie.CartesSpeciales[x])); }
+            if (x != -1)
+            {
+                AfficherCarte((Program.MaPartie.CartesSpeciales[x]));
+                Mourir();
             }
+        }
 
         public void Mourir()
         {
@@ -215,7 +220,21 @@ namespace App
             fait.Actif = true;
         } // Modif fait id
 
-  
+        private void Vacances(int nbJourEnPlus) // REMP NUM CARTE VAC
+        {
+            Program.MaPartie.VieActuelle.NbJour += nbJourEnPlus;
+            AfficherCarte(Program.MaPartie.CartesSpeciales[0]);  /// REMPLIR PAR LE NUM DE LA CARTE VAC
+        }
+
+        private List<Carte> DeterminerCartesEvent(Evenement evenement)
+        {
+            // choisir X cartes DIFFERENTS parmi les cartes de cet event
+        }
+
+        private Carte CarteParmiEvent()
+        {
+
+        }
 
         // Fonctions principales
 
@@ -316,14 +335,24 @@ namespace App
 
         public Carte ChosirCarte()
         {
+            if (cartesEvent.Count != 0)
+            {
 
+            }
             // nombre de jour augmente de 1(sauf scenario)
-            // si scénraio en cours(utiliser lindice de l'event)
+            // si scénraio en cours
+            
 
             // si date spéciale : début évenement
-            if (Program.MaPartie.TestDebutEvent() != -1)
+            int numEvent = Program.MaPartie.TestDebutEvent();
+            if (numEvent != -1)
             {
-                
+                //il s'agit de Vacances
+                if (numEvent > 100) { Vacances(numEvent - 100); }
+
+                //il s'agit d'un event : on récupère un certain nombre de cartes de cet event
+                cartesEvent = DeterminerCartesEvent(Program.MaPartie.Events[numEvent]);
+
             }
             else
             {
