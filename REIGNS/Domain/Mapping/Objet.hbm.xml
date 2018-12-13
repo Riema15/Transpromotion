@@ -10,7 +10,6 @@
     </id>
     <property name="Nom" column="obj_nom" not-null="true"/>
     <property name="Image" column="obj_image" />
-    <property name="Actif" column="obj_actif" not-null="true"/>
 
   </class>
 

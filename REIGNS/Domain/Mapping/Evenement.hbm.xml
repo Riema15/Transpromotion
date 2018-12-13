@@ -14,7 +14,7 @@
 
     <bag name="CartesConcernees" cascade="all" lazy="true">
       <key column="event_id"/>
-      <one-to-many class="carte"/>
+    <one-to-many class="carte"/>
     </bag>
 
   </class>

@@ -10,7 +10,7 @@
     </id>
     <property name="Nom" column="f_nom" not-null="true"/>
     <property name="Description" column="f_desc" not-null="true"/>
-    <property name="Actif" column="f_actif" not-null="true"/>
+ 
 
   </class>
 

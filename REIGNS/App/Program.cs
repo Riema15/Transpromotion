@@ -20,19 +20,19 @@ namespace App
         public static EffetRepository effetRep;
         public static ObjetRepository objetRep;
         public static PersonnageRepository persoRep;
+        public static EvenementRepository eventRep;
 
 
 
         static void Main(string[] args)
         {
-            /*
-            MaPartie.CartesEvent = carteRep.GetCarteEvent();
             MaPartie.CartesNoEvent = carteRep.GetCarteNotEvent();
             MaPartie.Objets = objetRep.GetAll();
             MaPartie.Faits = faitRep.GetAll();
             MaPartie.Morts = mortRep.GetAll();
             MaPartie.CartesSpeciales = carteRep.GetCartesSpeciales();
-            */
+            MaPartie.Events = eventRep.GetAll();
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

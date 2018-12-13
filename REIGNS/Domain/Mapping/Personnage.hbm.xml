@@ -13,6 +13,7 @@
     <property name="Couleur" column="pers_couleur" />
     <property name="Annee" column="pers_annee" not-null="true"/>
     <property name="Bureau" column="pers_bureau" />
+    <property name="EtreParrain" column="pers_parrain" />
     
 
   </class>

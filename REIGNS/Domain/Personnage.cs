@@ -19,6 +19,7 @@ namespace Domain
 
         public virtual string Bureau { get; set; }
 
+        public virtual bool EtreParrain { get; set; }
         public Personnage() { }
 
     }

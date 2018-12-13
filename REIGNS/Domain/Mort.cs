@@ -15,8 +15,6 @@ namespace Domain
 
         public virtual string Image { get; set; }
 
-        public virtual int IdCarteMort { get; set; }
-
         public Mort() { }
     }
 }

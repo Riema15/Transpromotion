@@ -7,7 +7,7 @@ using Domain;
 
 namespace DAL
 {
-    class EvenementRepository : Repository
+    public class EvenementRepository : Repository
     {
         public IList<Evenement> GetAll()
         {

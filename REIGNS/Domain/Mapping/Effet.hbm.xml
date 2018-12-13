@@ -9,7 +9,6 @@
       <generator class="native"></generator>
     </id>
     <property name="Nom" column="ef_nom" not-null="true"/>
-    <property name="Actif" column="ef_actif" not-null="true"/>
     <property name="EffetScolaire" column="ef_sco"/>
     <property name="EffetSous" column="ef_sous"/>
     <property name="EffetSocial" column="ef_soc"/>
