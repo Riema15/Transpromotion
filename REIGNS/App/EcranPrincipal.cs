@@ -12,12 +12,19 @@ using Domain;
 
 namespace App
 {
+
+    /// RESTE A FAIRE SURTOUT
+    /// AJOUTER LES NUM DE CARTES MANQUANTS
+    /// GESTION ET UTILISATION DES OBJETS
+    /// 
+
+
     public partial class EcranPrincipal : UserControl
     {
         private Carte carteActuelle;
         private List<Carte> carteAVenir;
         private Random random = new Random();
-        private List<Button> listeBtnObjet;
+        private List<Button> listeBtnObjet; 
         private List<Carte> cartesEvent;
   
         public EcranPrincipal()
@@ -118,14 +125,19 @@ namespace App
             listeBtnObjet[i].Text = "";
         }
 
+        public void MajNbJour()
+        {
+            valNbJour.Text = Program.MaPartie.VieActuelle.NbJour.ToString();
+        }
+
         // Fonctions utiles
 
-        public void TestJaugeMort()/// A MODIF LA CARTE A AFFICHER
+        public void TestJaugeMort()
         {
-            int x = Program.MaPartie.TestJaugeMort();
-            if (x != -1)
+            int idMort = Program.MaPartie.TestJaugeMort();
+            if (idMort != -1)
             {
-                AfficherCarte((Program.MaPartie.CartesSpeciales[x]));
+                AfficherCarte((((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort)));
                 Mourir();
             }
         }
@@ -140,24 +152,27 @@ namespace App
             mortLabel.Name = "txtMort";
             mortLabel.Size = new System.Drawing.Size(624, 95);
             mortLabel.Text = "VOUS ETES MORT";
+
             Button btnRetour = new Button();
             btnRetour.Text = "Revenir à l'accueil.";
             btnRetour.AutoSize = true;
             btnRetour.Location = new System.Drawing.Point(60, 226);
             btnRetour.Size = new System.Drawing.Size(30, 30);
             btnRetour.Name = "btnRetour";
+            btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+
             this.Controls.Add(mortLabel);
             this.Controls.Add(btnRetour);
 
-
+            
             //Garder certains objets et pas d'autre
             foreach (Objet ob in Program.MaPartie.Objets)
             {
-                if (ob.Id == 2) ob.Actif = false; // A VOI QUELS SONT LES ID D'OBJETS CONCERNES
-
+                // RIEN A GARDER POUR L'INSTANT
+                 ob.Actif = false; 
             }
-
-        } // Modif id objet a retirer
+            
+        } 
 
         public void AppliquerEffet()
         {
@@ -176,17 +191,32 @@ namespace App
 
         private void ChangerObjet(char[] chgtObjetChar)
         {
-            // Nouvel Objet = "+id"
-            if (chgtObjetChar[0] == '+')
+            if (chgtObjetChar.Length > 1)
             {
-                Program.MaPartie.Objets[chgtObjetChar[1]].Actif = true;
-                AfficherObjet(Program.MaPartie.Objets[chgtObjetChar[1]]);
-            }
-            // Perdre un objet = "-id"
-            if (chgtObjetChar[0] == '-')
-            {
-                Program.MaPartie.Objets[chgtObjetChar[1]].Actif = false;
-                EffacerObjet(Program.MaPartie.Objets[chgtObjetChar[1]]);
+                int idObjet = 0;
+
+                // Nouvel Objet = "+id"
+                if (chgtObjetChar[0] == '+')
+                {
+                    for (int i = 0; i < chgtObjetChar.Length; i++)
+                    {
+                        idObjet += ((int)chgtObjetChar[i + 1]) * ((int)Math.Pow(10, i));
+                        i++;
+                    }
+                    Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif = true;
+                    AfficherObjet(Program.MaPartie.Objets[chgtObjetChar[idObjet]]);
+                }
+                // Perdre un objet = "-id"
+                if (chgtObjetChar[0] == '-')
+                {
+                    for (int i = 0; i < chgtObjetChar.Length; i++)
+                    {
+                        idObjet += ((int)chgtObjetChar[i + 1]) * ((int)Math.Pow(10, i));
+                        i++;
+                    }
+                    Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif = false;
+                    EffacerObjet(Program.MaPartie.Objets[chgtObjetChar[idObjet]]);
+                }
             }
         }
 
@@ -195,45 +225,101 @@ namespace App
 
             AfficherFait(fait);
             // Nouvelle famille
-            if ((fait.Id == 0) || (fait.Id == 0) || (fait.Id == 0) || (fait.Id == 0))
+            if ((fait.Id == 1) || (fait.Id == 2) || (fait.Id == 3) || (fait.Id == 4) || (fait.Id == 5))
             {
                 Program.MaPartie.NbmFamille++;
                 //Si toute faite :
-                if (Program.MaPartie.NbmFamille == 4)
+                if (Program.MaPartie.NbmFamille == 5)
                 {
-                    Program.MaPartie.Faits[0].Actif = true;
-                    AfficherFait(Program.MaPartie.Faits[0]);
+                    Fait fait2 = ((List<Fait>)Program.MaPartie.Faits).Find(x => x.Id == 6);
+                    fait2.Actif = true;
+                    AfficherFait(fait2);
                 }
             }
 
             // Nouvelle asso
-            if ((fait.Id == 0) || (fait.Id == 0) || (fait.Id == 0) || (fait.Id == 0))
+            if ((fait.Id == 7) || (fait.Id == 8) || (fait.Id == 9) || (fait.Id == 10))
             {
                 Program.MaPartie.NbmAsso++;
                 //Si toute faite :
-                if (Program.MaPartie.NbmAsso == 5)
+                if (Program.MaPartie.NbmAsso == 4)
                 {
-                    Program.MaPartie.Faits[0].Actif = true;
-                    AfficherFait(Program.MaPartie.Faits[0]);
+                    Fait fait2 = ((List<Fait>)Program.MaPartie.Faits).Find(x => x.Id == 11);
+                    fait2.Actif = true;
+                    AfficherFait(fait2);
                 }
             }
             fait.Actif = true;
         } // Modif fait id
 
-        private void Vacances(int nbJourEnPlus) // REMP NUM CARTE VAC
+        private Carte Vacances(int nbJourEnPlus) // REMP NUM CARTE VAC
         {
             Program.MaPartie.VieActuelle.NbJour += nbJourEnPlus;
-            AfficherCarte(Program.MaPartie.CartesSpeciales[0]);  /// REMPLIR PAR LE NUM DE LA CARTE VAC
-        }
+            MajNbJour();
+            //modif jauge
+            if (Program.MaPartie.VieActuelle.JaugeSante>75) { Program.MaPartie.VieActuelle.JaugeSante -= 10; }
+            else if (Program.MaPartie.VieActuelle.JaugeSante<25) { Program.MaPartie.VieActuelle.JaugeSante += 10; }
+            if (Program.MaPartie.VieActuelle.JaugeScolaire >75) { Program.MaPartie.VieActuelle.JaugeScolaire -= 10; }
+            else if (Program.MaPartie.VieActuelle.JaugeScolaire < 25) { Program.MaPartie.VieActuelle.JaugeScolaire += 10; }
+            if (Program.MaPartie.VieActuelle.JaugeSous > 75) { Program.MaPartie.VieActuelle.JaugeSous -= 10; }
+            else if (Program.MaPartie.VieActuelle.JaugeSous < 25) { Program.MaPartie.VieActuelle.JaugeSous += 10; }
+            if (Program.MaPartie.VieActuelle.JaugeSocial > 75) { Program.MaPartie.VieActuelle.JaugeSocial -= 10; }
+            else if (Program.MaPartie.VieActuelle.JaugeSocial < 25) { Program.MaPartie.VieActuelle.JaugeSocial += 10; }
 
-        private List<Carte> DeterminerCartesEvent(Evenement evenement)
+            return Program.MaPartie.CartesSpeciales[0];  /// REMPLIR PAR LE NUM DE LA CARTE VAC
+        }
+        
+        private void DeterminerCartesEvent(Evenement evenement)
         {
             // choisir X cartes DIFFERENTS parmi les cartes de cet event
+
+            cartesEvent.Clear();
+            List<Carte> listeCartesConcernees = new List<Carte>(evenement.CartesConcernees);
+            int xRandom;
+            for (int i =0; i< evenement.NbCarteTirer; i++)
+            {
+                xRandom = random.Next(listeCartesConcernees.Count);
+                cartesEvent.Add(listeCartesConcernees[xRandom]);
+                listeCartesConcernees.RemoveAt(xRandom);
+            }
         }
 
         private Carte CarteParmiEvent()
         {
+            if (cartesEvent.Count != 0)
+            {
+                int position = random.Next(cartesEvent.Count);
+                Carte carte = cartesEvent[position];
+                cartesEvent.RemoveAt(position);
+                return carte;
+            }
+            return null;
+        }
 
+        private int UtiliserObjet(int idObjet)
+        {
+            // Recoit l'id d'un objet et renvoie un id de carte si l'objet est utilisable. Renvoie -1 sinon.
+            if (idObjet != -1)
+            {
+                // récupérer tous les objets possibles dans un tableau de string
+                string [] split = carteActuelle.ObjetPossible.Split(new char[] { '&' });
+                //Pour chaque objet possible
+                foreach (string objetPossibleString in split)
+                {
+                    char[] objetPossibleChar = objetPossibleString.ToCharArray();
+                    if (objetPossibleChar[0]==idObjet)
+                    {
+                        // l'objet a une application sur cette carte !
+                        int idCarte = 0;
+                        for (int i=0; i<objetPossibleChar.Length; i++)
+                        {
+                            idCarte += ((int)objetPossibleChar[i + 1]) * ((int)Math.Pow(10, i));
+                        }
+                        return idCarte;
+                    }
+                }
+            }
+            return -1;
         }
 
         // Fonctions principales
@@ -245,8 +331,8 @@ namespace App
             // Test de la mort (effet carte)
             if (rep.MortId != 0)
             {
-                AfficherCarte(Program.MaPartie.CartesSpeciales[rep.MortId]);
-                Program.MaPartie.Morts[rep.MortId].Actif = true;
+                AfficherCarte(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.MortId));
+                ((List<Mort>)Program.MaPartie.Morts).Find(x => x.Id == rep.MortId).Actif = true;
                 Mourir();
                 return;
             }
@@ -256,7 +342,7 @@ namespace App
             {
                 if (Program.MaPartie.Faits[rep.FaitId].Actif == false)
                 {
-                    NouveauFait(Program.MaPartie.Faits[rep.FaitId]);
+                    NouveauFait(((List<Fait>)Program.MaPartie.Faits).Find(x => x.Id == rep.FaitId));
                 }          
             }
 
@@ -267,7 +353,8 @@ namespace App
             Program.MaPartie.VieActuelle.JaugeScolaire += rep.EffetScolaire;
             AfficherJauge();
 
-            // Objet et Effet à modifier
+            // Effet à modifier 
+            //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET DID SUP A 9
             if (rep.ChgtEffet != "")
             {
                 char[] chgtEffetChar = rep.ChgtEffet.ToCharArray();
@@ -283,35 +370,36 @@ namespace App
                 }
 
             }
+
+            // Objet à modifier
             if (rep.ChgtObjet != "")
             // Nouveau = "+id", Perte = "-id", Evolution = "-id1+id2"
             {
-                char[] chgtObjetChar = rep.ChgtObjet.ToCharArray();
-                bool suite = false;
-                while (suite == false)
+                // Pour chaque objet
+                string[] split = rep.ChgtObjet.Split(new char[] { '&' });
+                foreach (string chgtObjetString in split)
                 {
+                    char[] chgtObjetChar = chgtObjetString.ToCharArray();
                     ChangerObjet(chgtObjetChar);
-                    if (chgtObjetChar.Length > 2) { chgtObjetChar.CopyTo(chgtObjetChar, 2); }
-                    else { suite = true; }
                 }
             }
 
             // La carte suivant immédiatement
             if (rep.CarteSuivante != -1)
             {
-                AfficherCarte(Program.MaPartie.CartesSpeciales[rep.CarteSuivante]);
+                AfficherCarte(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante));
                 return;
             }
 
             // Test de mort (Jauge)
             TestJaugeMort();
 
-            // Fin des effets actifs
+            // Fin des effets actifs AU PIF
             foreach (Effet effet in Program.MaPartie.VieActuelle.Effets)
             {
                 if (effet.Actif == true)
                 {
-                    if (random.Next(1, 4) == 1)
+                    if (random.Next(1, 5) == 1)
                     {
                         effet.Actif = false;
                         EffacerEffet(effet);
@@ -320,7 +408,8 @@ namespace App
             }
 
             // Les cartes qui suivront bientôt
-            carteAVenir.Add(Program.MaPartie.CartesSpeciales[rep.CarteAVenir]);
+            if (rep.CarteAVenir != 0)
+            { carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteAVenir)); }
 
             // Modification d'un bool de Cycle
             if (rep.BoolCycle != "")
@@ -333,29 +422,35 @@ namespace App
             carteActuelle = ChoisirCarte();
         }
 
-        public Carte ChosirCarte()
+        public Carte ChoisirCarte()
         {
+            // si scénraio en cours
             if (cartesEvent.Count != 0)
             {
-
+                Carte carte = CarteParmiEvent();
+                if (carte != null) { return carte; }
             }
-            // nombre de jour augmente de 1(sauf scenario)
-            // si scénraio en cours
-            
-
+                              
             // si date spéciale : début évenement
-            int numEvent = Program.MaPartie.TestDebutEvent();
-            if (numEvent != -1)
+            Evenement evenement = Program.MaPartie.TestDebutEvent();
+            if (evenement != null)
             {
-                //il s'agit de Vacances
-                if (numEvent > 100) { Vacances(numEvent - 100); }
+                //il s'agit de Vacances 
+                if (evenement.Id > 100) { return Vacances(evenement.NbCarteTirer); }
 
-                //il s'agit d'un event : on récupère un certain nombre de cartes de cet event
-                cartesEvent = DeterminerCartesEvent(Program.MaPartie.Events[numEvent]);
-
+                else
+                {
+                    //il s'agit d'un event : on récupère un certain nombre de cartes de cet event
+                    DeterminerCartesEvent(evenement);
+                    return CarteParmiEvent();
+                }
             }
             else
             {
+                // nombre de jour augmente de 1
+                Program.MaPartie.VieActuelle.NbJour++;
+                MajNbJour();
+
                 // si carte à venir : 1 chance sur 3
                 if ((carteAVenir.Count != 0) && (random.Next(101) > 66))
                 {
@@ -367,23 +462,90 @@ namespace App
             }
         }
 
+        public void EffetObjet(string txtBtn)
+        {
+            // Si un objet est rentré dans ce btn
+            if (txtBtn != "")
+            {
+                // Récupérer l'id de l'objet
+                int idObjet = -1;
+                foreach (Objet objet in Program.MaPartie.Objets)
+                {
+                    if (txtBtn == objet.Nom) { idObjet = objet.Id; }
+                }
+
+                // récupérer l'id de la carte suivante si l'objet peut être utilisé
+                int idCarte = UtiliserObjet(idObjet);
+                // Si utilisable
+                if (idCarte != -1)
+                {
+                    carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x =>x.Id == idCarte);
+                    AfficherCarte(carteActuelle);
+                }
+
+            }
+        }
+
         // Fonctions du form
 
         private void btnReponse1_Click(object sender, EventArgs e)
         {
             EffetReponse(carteActuelle.Rep1);
+            AfficherCarte(carteActuelle);
         }
 
         private void btnReponse2_Click(object sender, EventArgs e)
         {
+            // Effet de la réponse sur jauge, objet, etc + Nouvelle carte actuelle
             EffetReponse(carteActuelle.Rep2);
+            // Afficher cette nouvelle carte
+            AfficherCarte(carteActuelle);
         }
 
-        private void btnRetour_Clicl(object sender, EventArgs e)
+        private void btnRetour_Click(object sender, EventArgs e)
         {
             Accueil userControlAccueil = new Accueil();
             Controls.Add(userControlAccueil);
         }
 
+        private void btnObjet0_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet0.Text);
+        }
+
+        private void btnObjet1_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet1.Text);
+        }
+
+        private void btnObjet2_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet2.Text);
+        }
+
+        private void btnObjet3_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet3.Text);
+        }
+
+        private void btnObjet4_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet4.Text);
+        }
+
+        private void btnObjet5_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet5.Text);
+        }
+
+        private void btnObjet6_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet6.Text);
+        }
+
+        private void btnObjet7_Click(object sender, EventArgs e)
+        {
+            EffetObjet(btnObjet7.Text);
+        }
     }
 }

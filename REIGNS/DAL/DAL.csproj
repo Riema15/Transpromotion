@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="CarteRepository.cs" />
     <Compile Include="EffetRepository.cs" />
+    <Compile Include="EvenementRepository.cs" />
     <Compile Include="FaitRepository.cs" />
     <Compile Include="MortRepository.cs" />
     <Compile Include="ObjetRepository.cs" />

@@ -45,51 +45,15 @@ namespace Domain
         }
         
         // Selon le jour qu'on est, renvoie -1 (rien de spécial) ou un chiffre entre 0 et 12 (semestre 1 seulement) pour un event, et 100+nb Jours passés pour les vacances
-        public int TestDebutEvent()
+        public Evenement TestDebutEvent()
         {
             int nbJour = this.VieActuelle.NbJour;
 
-
-            //foreach (Evenement evenement in Events)
-            //{
-            //    if (nbJour== evenement.JourHappen) { return evenement.Id; }
-            //}
-
-            // Arrivée à l'école
-            if (nbJour == 0) { return 0; }
-            // début transpromo transdi
-            else if (nbJour == 2) { return 1; }
-            // Soirée parrainnage
-            else if (nbJour == 10) { return 2; }
-            // WEI
-            else if (nbJour == 25) { return 3; }
-            // Repas de famille
-            else if (nbJour == 35) // différent selon refus ou non
+            foreach (Evenement evenement in Events)
             {
-                if (VieActuelle.OrganiserRepasFamille == true) { return 5; } // a déjà dit oui
-                else { return 6; } // a refusé
+                if (nbJour == evenement.JourHappen) { return evenement; }
             }
-            //Vacances de toussaint
-            else if (nbJour == 47) { return 109; }
-            // Repas des régions
-            else if (nbJour == 56) { return 7; }
-            // Interpromo
-            else if (nbJour == 65) { return 8; }
-            // Gala
-            else if (nbJour == 75) { return 9; }
-            // Rallye des apparts
-            else if (nbJour == 85) { return 10; }
-            // Secret Santa
-            else if (nbJour == 95) { return 11; }
-            //Vacances de noël
-            else if (nbJour == 105) { return 117; }
-            // Transpromo soutenance
-            else if (nbJour == 125) { return 12; }
-            // Exam S1
-            else if (nbJour == 135) { return 13; }
-
-
-            return -1;
+            return null;
         }
 
         // Renvoie -1 si pas mort, sinon le num de la carte spé de la mort

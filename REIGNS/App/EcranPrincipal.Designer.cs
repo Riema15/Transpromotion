@@ -52,23 +52,23 @@
             this.btnObjet7 = new System.Windows.Forms.Button();
             this.btnObjet6 = new System.Windows.Forms.Button();
             this.txtNouveauFait = new System.Windows.Forms.Label();
-            this.imPlusSante = new System.Windows.Forms.PictureBox();
-            this.imMoinsSante = new System.Windows.Forms.PictureBox();
-            this.imMoinsSocial = new System.Windows.Forms.PictureBox();
-            this.imPlusSocial = new System.Windows.Forms.PictureBox();
-            this.imMoinsScolaire = new System.Windows.Forms.PictureBox();
-            this.imPlusScolaire = new System.Windows.Forms.PictureBox();
             this.imMoinsSous = new System.Windows.Forms.PictureBox();
             this.imPlusSous = new System.Windows.Forms.PictureBox();
+            this.imMoinsScolaire = new System.Windows.Forms.PictureBox();
+            this.imPlusScolaire = new System.Windows.Forms.PictureBox();
+            this.imMoinsSocial = new System.Windows.Forms.PictureBox();
+            this.imPlusSocial = new System.Windows.Forms.PictureBox();
+            this.imMoinsSante = new System.Windows.Forms.PictureBox();
+            this.imPlusSante = new System.Windows.Forms.PictureBox();
             this.txtNomPerso.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imPlusSante)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSante)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSocial)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imPlusSocial)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imMoinsScolaire)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imPlusScolaire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imMoinsSous)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imPlusSous)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsScolaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusScolaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSocial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSocial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSante)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNomPerso
@@ -227,6 +227,7 @@
             this.btnObjet0.Size = new System.Drawing.Size(70, 41);
             this.btnObjet0.TabIndex = 14;
             this.btnObjet0.UseVisualStyleBackColor = true;
+            this.btnObjet0.Click += new System.EventHandler(this.btnObjet0_Click);
             // 
             // btnObjet1
             // 
@@ -235,6 +236,7 @@
             this.btnObjet1.Size = new System.Drawing.Size(69, 41);
             this.btnObjet1.TabIndex = 15;
             this.btnObjet1.UseVisualStyleBackColor = true;
+            this.btnObjet1.Click += new System.EventHandler(this.btnObjet1_Click);
             // 
             // btnObjet2
             // 
@@ -243,6 +245,7 @@
             this.btnObjet2.Size = new System.Drawing.Size(69, 41);
             this.btnObjet2.TabIndex = 16;
             this.btnObjet2.UseVisualStyleBackColor = true;
+            this.btnObjet2.Click += new System.EventHandler(this.btnObjet2_Click);
             // 
             // btnObjet5
             // 
@@ -251,6 +254,7 @@
             this.btnObjet5.Size = new System.Drawing.Size(69, 41);
             this.btnObjet5.TabIndex = 19;
             this.btnObjet5.UseVisualStyleBackColor = true;
+            this.btnObjet5.Click += new System.EventHandler(this.btnObjet5_Click);
             // 
             // btnObjet4
             // 
@@ -259,6 +263,7 @@
             this.btnObjet4.Size = new System.Drawing.Size(69, 41);
             this.btnObjet4.TabIndex = 18;
             this.btnObjet4.UseVisualStyleBackColor = true;
+            this.btnObjet4.Click += new System.EventHandler(this.btnObjet4_Click);
             // 
             // btnObjet3
             // 
@@ -267,6 +272,7 @@
             this.btnObjet3.Size = new System.Drawing.Size(69, 41);
             this.btnObjet3.TabIndex = 17;
             this.btnObjet3.UseVisualStyleBackColor = true;
+            this.btnObjet3.Click += new System.EventHandler(this.btnObjet3_Click);
             // 
             // btnObjet7
             // 
@@ -275,6 +281,7 @@
             this.btnObjet7.Size = new System.Drawing.Size(69, 41);
             this.btnObjet7.TabIndex = 21;
             this.btnObjet7.UseVisualStyleBackColor = true;
+            this.btnObjet7.Click += new System.EventHandler(this.btnObjet7_Click);
             // 
             // btnObjet6
             // 
@@ -283,6 +290,7 @@
             this.btnObjet6.Size = new System.Drawing.Size(69, 41);
             this.btnObjet6.TabIndex = 20;
             this.btnObjet6.UseVisualStyleBackColor = true;
+            this.btnObjet6.Click += new System.EventHandler(this.btnObjet6_Click);
             // 
             // txtNouveauFait
             // 
@@ -296,69 +304,85 @@
             this.txtNouveauFait.TabIndex = 22;
             this.txtNouveauFait.Text = "Nouveau Fait";
             // 
-            // imPlusSante
-            // 
-            this.imPlusSante.Location = new System.Drawing.Point(173, 80);
-            this.imPlusSante.Name = "imPlusSante";
-            this.imPlusSante.Size = new System.Drawing.Size(20, 24);
-            this.imPlusSante.TabIndex = 23;
-            this.imPlusSante.TabStop = false;
-            // 
-            // imMoinsSante
-            // 
-            this.imMoinsSante.Location = new System.Drawing.Point(173, 105);
-            this.imMoinsSante.Name = "imMoinsSante";
-            this.imMoinsSante.Size = new System.Drawing.Size(20, 24);
-            this.imMoinsSante.TabIndex = 24;
-            this.imMoinsSante.TabStop = false;
-            // 
-            // imMoinsSocial
-            // 
-            this.imMoinsSocial.Location = new System.Drawing.Point(319, 99);
-            this.imMoinsSocial.Name = "imMoinsSocial";
-            this.imMoinsSocial.Size = new System.Drawing.Size(20, 24);
-            this.imMoinsSocial.TabIndex = 26;
-            this.imMoinsSocial.TabStop = false;
-            // 
-            // imPlusSocial
-            // 
-            this.imPlusSocial.Location = new System.Drawing.Point(319, 74);
-            this.imPlusSocial.Name = "imPlusSocial";
-            this.imPlusSocial.Size = new System.Drawing.Size(20, 24);
-            this.imPlusSocial.TabIndex = 25;
-            this.imPlusSocial.TabStop = false;
-            // 
-            // imMoinsScolaire
-            // 
-            this.imMoinsScolaire.Location = new System.Drawing.Point(483, 99);
-            this.imMoinsScolaire.Name = "imMoinsScolaire";
-            this.imMoinsScolaire.Size = new System.Drawing.Size(20, 24);
-            this.imMoinsScolaire.TabIndex = 28;
-            this.imMoinsScolaire.TabStop = false;
-            // 
-            // imPlusScolaire
-            // 
-            this.imPlusScolaire.Location = new System.Drawing.Point(483, 74);
-            this.imPlusScolaire.Name = "imPlusScolaire";
-            this.imPlusScolaire.Size = new System.Drawing.Size(20, 24);
-            this.imPlusScolaire.TabIndex = 27;
-            this.imPlusScolaire.TabStop = false;
-            // 
             // imMoinsSous
             // 
+            this.imMoinsSous.Image = global::App.Properties.Resources.sort_down;
             this.imMoinsSous.Location = new System.Drawing.Point(628, 99);
             this.imMoinsSous.Name = "imMoinsSous";
             this.imMoinsSous.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSous.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsSous.TabIndex = 30;
             this.imMoinsSous.TabStop = false;
             // 
             // imPlusSous
             // 
+            this.imPlusSous.Image = global::App.Properties.Resources.caret_arrow_up;
             this.imPlusSous.Location = new System.Drawing.Point(628, 74);
             this.imPlusSous.Name = "imPlusSous";
             this.imPlusSous.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSous.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusSous.TabIndex = 29;
             this.imPlusSous.TabStop = false;
+            // 
+            // imMoinsScolaire
+            // 
+            this.imMoinsScolaire.Image = global::App.Properties.Resources.sort_down;
+            this.imMoinsScolaire.Location = new System.Drawing.Point(483, 99);
+            this.imMoinsScolaire.Name = "imMoinsScolaire";
+            this.imMoinsScolaire.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsScolaire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imMoinsScolaire.TabIndex = 28;
+            this.imMoinsScolaire.TabStop = false;
+            // 
+            // imPlusScolaire
+            // 
+            this.imPlusScolaire.Image = global::App.Properties.Resources.caret_arrow_up;
+            this.imPlusScolaire.Location = new System.Drawing.Point(483, 74);
+            this.imPlusScolaire.Name = "imPlusScolaire";
+            this.imPlusScolaire.Size = new System.Drawing.Size(20, 24);
+            this.imPlusScolaire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imPlusScolaire.TabIndex = 27;
+            this.imPlusScolaire.TabStop = false;
+            // 
+            // imMoinsSocial
+            // 
+            this.imMoinsSocial.Image = global::App.Properties.Resources.sort_down;
+            this.imMoinsSocial.Location = new System.Drawing.Point(319, 99);
+            this.imMoinsSocial.Name = "imMoinsSocial";
+            this.imMoinsSocial.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imMoinsSocial.TabIndex = 26;
+            this.imMoinsSocial.TabStop = false;
+            // 
+            // imPlusSocial
+            // 
+            this.imPlusSocial.Image = global::App.Properties.Resources.caret_arrow_up;
+            this.imPlusSocial.Location = new System.Drawing.Point(319, 74);
+            this.imPlusSocial.Name = "imPlusSocial";
+            this.imPlusSocial.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imPlusSocial.TabIndex = 25;
+            this.imPlusSocial.TabStop = false;
+            // 
+            // imMoinsSante
+            // 
+            this.imMoinsSante.Image = global::App.Properties.Resources.sort_down;
+            this.imMoinsSante.Location = new System.Drawing.Point(173, 105);
+            this.imMoinsSante.Name = "imMoinsSante";
+            this.imMoinsSante.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSante.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imMoinsSante.TabIndex = 24;
+            this.imMoinsSante.TabStop = false;
+            // 
+            // imPlusSante
+            // 
+            this.imPlusSante.Image = global::App.Properties.Resources.caret_arrow_up;
+            this.imPlusSante.Location = new System.Drawing.Point(173, 80);
+            this.imPlusSante.Name = "imPlusSante";
+            this.imPlusSante.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSante.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imPlusSante.TabIndex = 23;
+            this.imPlusSante.TabStop = false;
             // 
             // EcranPrincipal
             // 
@@ -399,14 +423,14 @@
             this.Size = new System.Drawing.Size(717, 474);
             this.txtNomPerso.ResumeLayout(false);
             this.txtNomPerso.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imPlusSante)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSante)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSocial)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imPlusSocial)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imMoinsScolaire)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imPlusScolaire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imMoinsSous)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imPlusSous)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsScolaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusScolaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSocial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSocial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imMoinsSante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imPlusSante)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
