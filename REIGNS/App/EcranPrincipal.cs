@@ -146,6 +146,7 @@ namespace App
         {
             //Réponse spécifique
 
+            /*
             GroupBox mortLabel = new GroupBox();
             mortLabel.AutoSize = true;
             mortLabel.Location = new System.Drawing.Point(40, 216);
@@ -163,8 +164,14 @@ namespace App
 
             this.Controls.Add(mortLabel);
             this.Controls.Add(btnRetour);
+            */
 
-            
+
+            this.btnReponse1.Click -= new System.EventHandler(this.btnReponse1_Click);
+            this.btnReponse1.Click += new System.EventHandler(this.btnRetour_Click);
+            this.btnReponse2.Click -= new System.EventHandler(this.btnReponse2_Click);
+            this.btnReponse2.Click += new System.EventHandler(this.btnRetour_Click);
+
             //Garder certains objets et pas d'autre
             foreach (Objet ob in Program.MaPartie.Objets)
             {
