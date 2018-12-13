@@ -63,24 +63,16 @@ namespace Domain
             int sco = this.VieActuelle.JaugeScolaire;
             int sou = this.VieActuelle.JaugeSous;
             int soc = this.VieActuelle.JaugeSocial;
-            if ((san <= 0) && (san >= 100))
-            {
-                return 0;
-            }
-            if ((sco <= 0) && (sco >= 100))
-            {
-                return 0;
-            }
-            if ((sou <= 0) && (sou >= 100))
-            {
-                return 0;
-            }
-            if ((soc <= 0) && (soc >= 100))
-            {
-                return 0;
-            }
+            if (san <= 0) return 388;
+            else if (san >= 100) return 390;
+            else if (sco <= 0) return 380;
+            else if (sco >= 100) return 382;
+            else if (sou <= 0) return 392;
+            else if (sou >= 100) return 394;
+            else if (soc <= 0) return 384;
+            else if (soc >= 100) return 386;
 
-            return -1;
+                return -1;
         }
 
     }

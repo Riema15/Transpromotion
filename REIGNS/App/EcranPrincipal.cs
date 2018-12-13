@@ -138,18 +138,6 @@ namespace App
             if (idMort != -1)
             {
                 AfficherCarte((((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort)));
-
-
-                this.btnReponse1.Click -= new System.EventHandler(this.btnReponse1_Click);
-                this.btnReponse1.Click += new System.EventHandler(this.btnFin_Click);
-                this.btnReponse2.Click -= new System.EventHandler(this.btnReponse2_Click);
-                this.btnReponse2.Click += new System.EventHandler(this.btnFin_Click);
-                //Garder certains objets et pas d'autre
-                foreach (Objet ob in Program.MaPartie.Objets)
-                {
-                    // RIEN A GARDER POUR L'INSTANT
-                    ob.Actif = false;
-                }
             }
         }
 
