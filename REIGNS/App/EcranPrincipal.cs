@@ -13,10 +13,7 @@ using Domain;
 namespace App
 {
 
-    /// RESTE A FAIRE SURTOUT
-    /// AJOUTER LES NUM DE CARTES MANQUANTS
-    /// GESTION ET UTILISATION DES OBJETS
-    /// 
+  
 
 
     public partial class EcranPrincipal : UserControl
@@ -359,7 +356,7 @@ namespace App
             AfficherJauge();
 
             // Effet à modifier 
-            //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET DID SUP A 9
+            //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET D'ID SUP A 9
             if (rep.ChgtEffet != "")
             {
                 char[] chgtEffetChar = rep.ChgtEffet.ToCharArray();
@@ -420,9 +417,34 @@ namespace App
             if (rep.BoolCycle != "")
             {
                 char[] charBoolCycle = rep.BoolCycle.ToCharArray();
-                if (charBoolCycle[0] == '+') { Program.MaPartie.VieActuelle.MettreVraiBoolCycle((int)charBoolCycle[1]); }
-                else { Program.MaPartie.VieActuelle.MettreFauxBoolCycle((int)charBoolCycle[1]); }
-            }
+                if (charBoolCycle[1] != '3')
+                {
+                    if (charBoolCycle[0] == '+')
+                    {
+                        Program.MaPartie.VieActuelle.MettreVraiBoolCycle((int)charBoolCycle[1]);
+                    }
+                    else { Program.MaPartie.VieActuelle.MettreFauxBoolCycle((int)charBoolCycle[1]); }
+                }
+                else // repas de famille
+                {
+                    // Il a refusé d'organiser
+                    if (charBoolCycle[0] == '-')
+                    {
+                        Program.MaPartie.VieActuelle.NbRefusRepasFamille++;
+                    }
+                    if (Program.MaPartie.VieActuelle.NbRefusRepasFamille == 3)
+                    {
+                        carteAVenir.Remove(carteAVenir.Find(x => x.Id == 0));
+                        carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 0));
+                    }
+                    //Il a accepté d'organiser
+                    if (charBoolCycle[0] == '+')
+                    {
+                        carteAVenir.Remove(carteAVenir.Find(x => x.Id == 0));
+                        carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 0));
+                    }
+                }
+           }
 
             carteActuelle = ChoisirCarte();
         }
@@ -435,7 +457,7 @@ namespace App
                 Carte carte = CarteParmiEvent();
                 if (carte != null) { return carte; }
             }
-                              
+
             // si date spéciale : début évenement
             Evenement evenement = Program.MaPartie.TestDebutEvent();
             if (evenement != null)
@@ -445,26 +467,31 @@ namespace App
 
                 else
                 {
-                    //il s'agit d'un event : on récupère un certain nombre de cartes de cet event
-                    DeterminerCartesEvent(evenement);
-                    return CarteParmiEvent();
+                    if ((evenement.Id != 8) || (evenement.Id != 10)) // event pas fini encore
+                    {
+                        //il s'agit d'un event : on récupère un certain nombre de cartes de cet event
+                        DeterminerCartesEvent(evenement);
+                        return CarteParmiEvent();
+                    }
+
                 }
             }
-            else
+            // else {
+
+            // nombre de jour augmente de 1
+            Program.MaPartie.VieActuelle.NbJour++;
+            MajNbJour();
+
+            // si carte à venir : 1 chance sur 3
+            if ((carteAVenir.Count != 0) && (random.Next(101) > 66))
             {
-                // nombre de jour augmente de 1
-                Program.MaPartie.VieActuelle.NbJour++;
-                MajNbJour();
-
-                // si carte à venir : 1 chance sur 3
-                if ((carteAVenir.Count != 0) && (random.Next(101) > 66))
-                {
-                    return carteAVenir[random.Next(carteAVenir.Count())];
-                }
-
-                // sinon aléatoire
-                return Program.MaPartie.CartesNoEvent[random.Next(Program.MaPartie.CartesNoEvent.Count())];
+                return carteAVenir[random.Next(carteAVenir.Count())];
             }
+
+            // sinon aléatoire
+            return Program.MaPartie.CartesNoEvent[random.Next(Program.MaPartie.CartesNoEvent.Count())];
+
+            //}
         }
 
         public void EffetObjet(string txtBtn)
@@ -562,5 +589,6 @@ namespace App
         {
             EffetObjet(btnObjet7.Text);
         }
+
     }
 }
