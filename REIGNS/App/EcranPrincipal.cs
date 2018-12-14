@@ -191,8 +191,10 @@ namespace App
             AfficherJauge();
         }      
 
-        private void ChangerObjet(char[] chgtObjetChar)
+        private bool ChangerObjet(char[] chgtObjetChar)
         {
+            // Change l'état d'un objet renvoie true si ça s'est fait false sinon
+
             if (chgtObjetChar.Length > 1)
             {
                 int idObjet = 0;
@@ -216,10 +218,20 @@ namespace App
                         idObjet += ((int)chgtObjetChar[i + 1]) * ((int)Math.Pow(10, i));
                         i++;
                     }
-                    Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif = false;
-                    EffacerObjet(Program.MaPartie.Objets[chgtObjetChar[idObjet]]);
+                    if (Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif == false)
+                    {
+                        // si on ne l'avait déjà pas
+                        return false;
+                    }
+                    else
+                    {
+                        Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif = false;
+                        EffacerObjet(Program.MaPartie.Objets[chgtObjetChar[idObjet]]);
+                    }
                 }
+               
             }
+            return true;
         }
 
         private void NouveauFait(Fait fait)
@@ -252,7 +264,7 @@ namespace App
                 }
             }
             fait.Actif = true;
-        } // Modif fait id
+        } 
 
         private Carte Vacances(int nbJourEnPlus) // REMP NUM CARTE VAC
         {
@@ -303,6 +315,14 @@ namespace App
             // Recoit l'id d'un objet et renvoie un id de carte si l'objet est utilisable. Renvoie -1 sinon.
             if (idObjet != -1)
             {
+                // test si choco menthe
+                if (idObjet==17)
+                {
+                    AfficherCarte((((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 423))); 
+                    Mourir();
+                }
+
+
                 // récupérer tous les objets possibles dans un tableau de string
                 string [] split = carteActuelle.ObjetPossible.Split(new char[] { '&' });
                 //Pour chaque objet possible
@@ -377,12 +397,14 @@ namespace App
             if (rep.ChgtObjet != "")
             // Nouveau = "+id", Perte = "-id", Evolution = "-id1+id2"
             {
+                bool continuer = true;
                 // Pour chaque objet
                 string[] split = rep.ChgtObjet.Split(new char[] { '&' });
                 foreach (string chgtObjetString in split)
                 {
                     char[] chgtObjetChar = chgtObjetString.ToCharArray();
-                    ChangerObjet(chgtObjetChar);
+                    continuer = ChangerObjet(chgtObjetChar);
+                    if (continuer==false) { split = new string[0]; }
                 }
             }
 
@@ -391,6 +413,12 @@ namespace App
             {
                 AfficherCarte(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante));
                 return;
+            }
+
+            if (rep.DebutEvent!=-1)
+            {
+                DeterminerCartesEvent(((List<Evenement>)Program.MaPartie.Events).Find(x => x.Id == rep.DebutEvent));
+
             }
 
             // Test de mort (Jauge)
@@ -434,14 +462,8 @@ namespace App
                     }
                     if (Program.MaPartie.VieActuelle.NbRefusRepasFamille == 3)
                     {
-                        carteAVenir.Remove(carteAVenir.Find(x => x.Id == 0));
-                        carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 0));
-                    }
-                    //Il a accepté d'organiser
-                    if (charBoolCycle[0] == '+')
-                    {
-                        carteAVenir.Remove(carteAVenir.Find(x => x.Id == 0));
-                        carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 0));
+                        carteAVenir.Remove(carteAVenir.Find(x => x.Id == 101));
+                        carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 102));
                     }
                 }
            }
@@ -485,7 +507,9 @@ namespace App
             // si carte à venir : 1 chance sur 3
             if ((carteAVenir.Count != 0) && (random.Next(101) > 66))
             {
-                return carteAVenir[random.Next(carteAVenir.Count())];
+                Carte carte = carteAVenir[random.Next(carteAVenir.Count())];
+                carteAVenir.Remove(carte);
+                return carte;
             }
 
             // sinon aléatoire
