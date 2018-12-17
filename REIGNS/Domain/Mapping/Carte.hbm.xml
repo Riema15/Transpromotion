@@ -8,9 +8,10 @@
     <id name="Id" column="carte_id" type="int">
       <generator class="native"></generator>
     </id>
+
+    <property name="NumEvent" column="carte_num_event" not-null="true"/>
     <property name="Text" column="carte_txt" not-null="true"/>
     <property name="ObjetPossible" column="carte_obj" not-null="true"/>
-    <property name="NumEvent" column="carte_num_event" not-null="true"/>
 
 
     <bag name="Personnage" cascade="all" lazy="true">
@@ -18,11 +19,11 @@
       <one-to-one class="personnage"/>
     </bag>
     <bag name="Rep1" cascade="all" lazy="true">
-      <key column="rep_id"/>
+      <key column="rep_id1"/>
       <one-to-one class="reponse"/>
     </bag>
     <bag name="Rep2" cascade="all" lazy="true">
-      <key column="rep_id"/>
+      <key column="rep_id2"/>
       <one-to-one class="reponse"/>
     </bag>
 

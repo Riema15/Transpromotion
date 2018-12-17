@@ -10,7 +10,6 @@
     </id>
     <property name="Nom" column="mort_nom" not-null="true"/>
     <property name="Image" column="mort_image" not-null="true"/>
-    <property name="Actif" column="mort_actif" not-null="true"/>
   
   </class>
 
