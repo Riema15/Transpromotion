@@ -26,7 +26,10 @@ namespace App
         private Random random = new Random();
         private List<Button> listeBtnObjet; 
         private List<Carte> cartesEvent;
-  
+
+
+        public Carte carteTourSuivant;
+
         public EcranPrincipal()
         {
             InitializeComponent();
@@ -45,15 +48,40 @@ namespace App
 
         // Methodes d'affichage
 
+        public string AfficherTexte(int taille, string texte)
+        {
+            List<String> listeAfficher = new List<string>();
+            string cut1 = texte.Substring(0, taille);
+            listeAfficher.Add(cut1);
+            string cut2 = texte. Substring(taille+1);
+            if (cut2.Length > taille)
+            {
+                listeAfficher.Add(AfficherTexte(taille, cut2));
+            }
+            else { listeAfficher.Add(cut2); }
+            return String.Join("-</br>", listeAfficher.ToArray());
+        }
         public void AfficherCarte(Carte carte)
         {
             //Afficher les informatiosn propres à la carte
             txtNomPerso.Text = carte.Personnage.NomPerso;
-            txtCarteContenu.Text = carte.Text;
+            if (carte.Text.Length > 70)
+            {
+                txtCarteContenu.Text = AfficherTexte(70, carte.Text);                
+            }
+            else { txtCarteContenu.Text = carte.Text; }
 
             //Afficher les réponses possibles    
-            btnReponse1.Text = carte.Rep1.Text;
-            btnReponse2.Text = carte.Rep2.Text;
+            if (carte.Rep1.Text.Length > 25)
+            {
+                btnReponse1.Text = AfficherTexte(25, carte.Rep1.Text);
+            }
+            else { btnReponse1.Text = carte.Rep1.Text; }
+            if (carte.Rep2.Text.Length > 25)
+            {
+                btnReponse2.Text = AfficherTexte(25, carte.Rep2.Text);
+            }
+            else { btnReponse2.Text = carte.Rep2.Text; }
         }
 
         public void AfficherJauge()
@@ -132,13 +160,17 @@ namespace App
 
         // Fonctions utiles
 
-        public void TestJaugeMort()
+        public Carte TestJaugeMort()
         {
             int idMort = Program.MaPartie.TestJaugeMort();
             if (idMort != -1)
             {
-                AfficherCarte((((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort)));
+                
+
+                if (((idMort == 384)||(idMort==392)) && (Program.MaPartie.VieActuelle.Ami == true)) { carteTourSuivant = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 439);  }
+                return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
             }
+            return null;
         }
 
         public void Mourir()
@@ -255,9 +287,9 @@ namespace App
                 }
             }
             fait.Actif = true;
-        } // Modif fait id
+        } 
 
-        private Carte Vacances(int nbJourEnPlus) // REMP NUM CARTE VAC
+        private Carte Vacances(int nbJourEnPlus) 
         {
             Program.MaPartie.VieActuelle.NbJour += nbJourEnPlus;
             MajNbJour();
@@ -271,7 +303,7 @@ namespace App
             if (Program.MaPartie.VieActuelle.JaugeSocial > 75) { Program.MaPartie.VieActuelle.JaugeSocial -= 10; }
             else if (Program.MaPartie.VieActuelle.JaugeSocial < 25) { Program.MaPartie.VieActuelle.JaugeSocial += 10; }
 
-            return Program.MaPartie.CartesSpeciales[0];  /// REMPLIR PAR LE NUM DE LA CARTE VAC
+            return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 428));  /// REMPLIR PAR LE NUM DE LA CARTE VAC
         }
         
         private void DeterminerCartesEvent(Evenement evenement)
@@ -392,12 +424,17 @@ namespace App
             // La carte suivant immédiatement
             if (rep.CarteSuivante != -1)
             {
-                AfficherCarte(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante));
+                carteActuelle =  ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
                 return;
             }
 
             // Test de mort (Jauge)
-            TestJaugeMort();
+            Carte carteJaugeMort = TestJaugeMort();
+            if (carteJaugeMort != null)
+            {
+                carteActuelle = carteJaugeMort;
+                return;
+            }
 
             // Fin des effets actifs AU PIF
             foreach (Effet effet in Program.MaPartie.VieActuelle.Effets)
@@ -429,6 +466,15 @@ namespace App
 
         public Carte ChoisirCarte()
         {
+            //Arrêt du code :
+            if (Program.MaPartie.VieActuelle.NbJour==136)
+            {
+                Mourir();
+                txtCarteContenu.Text = "Bravo, vous êtes arrivez à la fin du jeu ! </br> Vous pouvez nous soutenir en nous payant un café ! Ou en nous proposant de nouvelles idées... </br> Pour nous contacter : mgibert001@ensc.fr";
+                btnReponse1.Text = "Merci d'avoir joué !";
+                btnReponse2.Text = "Bonne journée !";
+            }
+
             // si scénraio en cours
             if (cartesEvent.Count != 0)
             {
@@ -495,14 +541,25 @@ namespace App
 
         private void btnReponse1_Click(object sender, EventArgs e)
         {
-            EffetReponse(carteActuelle.Rep1);
+            if (carteTourSuivant == null)
+            { EffetReponse(carteActuelle.Rep1); }
+            else
+            {
+                carteActuelle = carteTourSuivant;
+                carteTourSuivant = null;
+            }
             AfficherCarte(carteActuelle);
         }
 
         private void btnReponse2_Click(object sender, EventArgs e)
         {
-            // Effet de la réponse sur jauge, objet, etc + Nouvelle carte actuelle
-            EffetReponse(carteActuelle.Rep2);
+            if (carteTourSuivant == null)
+            { EffetReponse(carteActuelle.Rep1); }
+            else
+            {
+                carteActuelle = carteTourSuivant;
+                carteTourSuivant = null;
+            }
             // Afficher cette nouvelle carte
             AfficherCarte(carteActuelle);
         }
@@ -562,5 +619,7 @@ namespace App
         {
             EffetObjet(btnObjet7.Text);
         }
+
+
     }
 }

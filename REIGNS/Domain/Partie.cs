@@ -69,7 +69,10 @@ namespace Domain
             else if (sco >= 100) return 382;
             else if (sou <= 0) return 392;
             else if (sou >= 100) return 394;
-            else if (soc <= 0) return 384;
+            else if (soc <= 0)
+            {
+                return 384;
+            }
             else if (soc >= 100) return 386;
 
                 return -1;

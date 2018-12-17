@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL;
 using Domain;
+using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 
 namespace App
 {
@@ -32,7 +34,17 @@ namespace App
             MaPartie.Morts = mortRep.GetAll();
             MaPartie.CartesSpeciales = carteRep.GetCartesSpeciales();
             MaPartie.Events = eventRep.GetAll();
-            
+
+            Console.WriteLine("Exporting DB schema... ");
+
+            Configuration cfg = new Configuration();
+            cfg.Configure();
+            // Update database according to mapping files and DB credentials
+            new SchemaExport(cfg).Execute(true, true, false);
+
+            Console.WriteLine("Done!");
+            Console.ReadKey();
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -86,9 +86,9 @@
             this.txtCarteContenu.AutoSize = true;
             this.txtCarteContenu.Location = new System.Drawing.Point(27, 37);
             this.txtCarteContenu.Name = "txtCarteContenu";
-            this.txtCarteContenu.Size = new System.Drawing.Size(56, 17);
+            this.txtCarteContenu.Size = new System.Drawing.Size(576, 17);
             this.txtCarteContenu.TabIndex = 0;
-            this.txtCarteContenu.Text = "Coucou";
+            this.txtCarteContenu.Text = "12345678901234567890123456789012345678901234567890123456789001234567890";
             // 
             // txtSante
             // 
