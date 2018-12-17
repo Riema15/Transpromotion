@@ -365,15 +365,29 @@ namespace App
                 string [] split = carteActuelle.ObjetPossible.Split(new char[] { '&' });
                 //Pour chaque objet possible
                 foreach (string objetPossibleString in split)
+                if (carteActuelle.ObjetPossible != "")
                 {
                     char[] objetPossibleChar = objetPossibleString.ToCharArray();
                     if (objetPossibleChar[0]==idObjet)
+                    // récupérer tous les objets possibles dans un tableau de string
+                    string[] split = carteActuelle.ObjetPossible.Split(new char[] { '&' });
+                    //Pour chaque objet possible
+                    foreach (string objetPossibleString in split)
                     {
                         // l'objet a une application sur cette carte !
                         int idCarte = 0;
                         for (int i=0; i<objetPossibleChar.Length; i++)
+                        char[] objetPossibleChar = objetPossibleString.ToCharArray();
+                        if (objetPossibleChar[0] == idObjet)
                         {
                             idCarte += ((int)objetPossibleChar[i + 1]) * ((int)Math.Pow(10, i));
+                            // l'objet a une application sur cette carte !
+                            int idCarte = 0;
+                            for (int i = 0; i < objetPossibleChar.Length; i++)
+                            {
+                                idCarte += ((int)objetPossibleChar[i + 1]) * ((int)Math.Pow(10, i));
+                            }
+                            return idCarte;
                         }
                         return idCarte;
                     }
@@ -416,6 +430,7 @@ namespace App
             // Effet à modifier 
             //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET DID SUP A 9
             //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET D'ID SUP A 9
+            if (rep.ChgtEffet != "")
             {
                 char[] chgtEffetChar = rep.ChgtEffet.ToCharArray();
                 if (chgtEffetChar[0] == '+')
