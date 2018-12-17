@@ -70,7 +70,7 @@ CREATE TABLE `effet` (
 CREATE TABLE `evenement` (
   `Id` int(11) NOT NULL,
   `Nom` text COLLATE utf8_unicode_ci NOT NULL,
-  `JourHappen` date NOT NULL,
+  `JourHappen` int NOT NULL,
   `NbCarteTirer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -121,8 +121,9 @@ CREATE TABLE `personnage` (
   `Id` int(11) NOT NULL,
   `Nom` text NOT NULL,
   `Image` text NOT NULL,
-  `Annee` int(11) NOT NULL,
   `Couleur` text,
+  `Annee` int(11),
+ 
   `Bureau` text,
   `etreParrain` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

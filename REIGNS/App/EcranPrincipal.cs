@@ -303,7 +303,7 @@ namespace App
             if (Program.MaPartie.VieActuelle.JaugeSocial > 75) { Program.MaPartie.VieActuelle.JaugeSocial -= 10; }
             else if (Program.MaPartie.VieActuelle.JaugeSocial < 25) { Program.MaPartie.VieActuelle.JaugeSocial += 10; }
 
-            return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 428));  /// REMPLIR PAR LE NUM DE LA CARTE VAC
+            return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 428);  /// REMPLIR PAR LE NUM DE LA CARTE VAC
         }
         
         private void DeterminerCartesEvent(Evenement evenement)
