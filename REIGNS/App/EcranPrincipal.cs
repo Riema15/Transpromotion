@@ -416,7 +416,6 @@ namespace App
             // Effet à modifier 
             //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET DID SUP A 9
             //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET D'ID SUP A 9
-            if (rep.ChgtEffet != "")
             {
                 char[] chgtEffetChar = rep.ChgtEffet.ToCharArray();
                 if (chgtEffetChar[0] == '+')
