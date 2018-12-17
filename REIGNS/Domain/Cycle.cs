@@ -10,6 +10,7 @@ namespace Domain
         public bool BadgeAbime { get; set; }
         public bool Ami { get; set; }
         public bool OrganiserRepasFamille { get; set; }
+        public int NbRefusRepasFamille { get; set; }
         public int FormationJE { get; set; }
 
 
@@ -17,7 +18,7 @@ namespace Domain
         {
             if (numBoolEnQuestion==1) { BadgeAbime = true; }
             else if (numBoolEnQuestion == 2) { Ami = true; }
-            else if (numBoolEnQuestion == 3) { OrganiserRepasFamille = true; }
+            else if (numBoolEnQuestion == 3) { OrganiserRepasFamille = true; } // ligne pas possible
             else if (numBoolEnQuestion == 4) { FormationJE++; }
         }
 

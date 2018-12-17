@@ -33,6 +33,8 @@ namespace Domain
 
         public virtual string BoolCycle { get; set; }
 
+        public virtual int DebutEvent { get; set; }
+
         public Reponse() { }
 
     }
