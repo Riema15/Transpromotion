@@ -236,23 +236,28 @@ namespace App
                 {
                     for (int i = 0; i < chgtObjetChar.Length; i++)
                     {
-                        idObjet += ((int)chgtObjetChar[i + 1]) * ((int)Math.Pow(10, i));
+                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i + 1])) * ((int)Math.Pow(10, i));
                         i++;
                     }
-                    Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif = true;
-                    AfficherObjet(Program.MaPartie.Objets[chgtObjetChar[idObjet]]);
+                    if (Program.MaPartie.Objets[idObjet].Actif != true)
+                    {
+                        Program.MaPartie.Objets[idObjet].Actif = true;
+                        AfficherObjet(Program.MaPartie.Objets[idObjet]);
+                        return true;
+                    }
+                    else { return false; }
                 }
                 // Perdre un objet = "-id"
                 if (chgtObjetChar[0] == '-')
                 {
                     for (int i = 0; i < chgtObjetChar.Length; i++)
                     {
-                        idObjet += ((int)chgtObjetChar[i + 1]) * ((int)Math.Pow(10, i));
+                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i + 1])) * ((int)Math.Pow(10, i));
                         i++;
                     }
-                    Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif = false;
-                    EffacerObjet(Program.MaPartie.Objets[chgtObjetChar[idObjet]]);
-                    if (Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif == false)
+                    Program.MaPartie.Objets[idObjet].Actif = false;
+                    EffacerObjet(Program.MaPartie.Objets[idObjet]);
+                    if (Program.MaPartie.Objets[idObjet].Actif == false)
                     {
                         // si on ne l'avait déjà pas
                         return false;
@@ -390,7 +395,7 @@ namespace App
             // Test de la mort (effet carte)
             if (rep.MortId != 0)
             {
-                AfficherCarte(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.MortId));
+                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.MortId);
                 ((List<Mort>)Program.MaPartie.Morts).Find(x => x.Id == rep.MortId).Actif = true;
                 Mourir();
                 return;
@@ -449,18 +454,17 @@ namespace App
             }
 
             // La carte suivant immédiatement
-            if (rep.CarteSuivante != -1)
+            Console.WriteLine(rep.CarteSuivante + " " + (rep.CarteSuivante != 0));
             if (rep.CarteSuivante != 0)
             {
                 carteActuelle =  ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
+         
                 return;
             }
-
-            if (rep.DebutEvent!=-1)
+            
             if (rep.DebutEvent!=0)
             {
                 DeterminerCartesEvent(((List<Evenement>)Program.MaPartie.Events).Find(x => x.Id == rep.DebutEvent));
-
             }
 
             // Test de mort (Jauge)
@@ -618,7 +622,9 @@ namespace App
         private void btnReponse1_Click(object sender, EventArgs e)
         {
             if (carteTourSuivant == null)
-            { EffetReponse(carteActuelle.Rep1); }
+            {
+                EffetReponse(carteActuelle.Rep1);               
+            }
             else
             {
                 carteActuelle = carteTourSuivant;
