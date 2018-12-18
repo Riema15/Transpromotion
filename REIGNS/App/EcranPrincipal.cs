@@ -166,8 +166,7 @@ namespace App
         }
 
         // Fonctions utiles
-
-        public Carte TestJaugeMort()
+        
         public int TestJaugeMort()
         {
             int idMort = Program.MaPartie.TestJaugeMort();
@@ -176,10 +175,10 @@ namespace App
                 
 
                 if (((idMort == 384)||(idMort==392)) && (Program.MaPartie.VieActuelle.Ami == true)) { carteTourSuivant = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 439);  }
-                return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
+          
                 return (idMort);
             }
-            return null;
+            return 0;
         }
 
         public void Mourir()
@@ -234,8 +233,7 @@ namespace App
             }
             AfficherJauge();
         }      
-
-        private void ChangerObjet(char[] chgtObjetChar)
+        
         private bool ChangerObjet(char[] chgtObjetChar)
         {
             // Change l'état d'un objet renvoie true si ça s'est fait false sinon
@@ -327,7 +325,7 @@ namespace App
             if (Program.MaPartie.VieActuelle.JaugeSocial > 75) { Program.MaPartie.VieActuelle.JaugeSocial -= 10; }
             else if (Program.MaPartie.VieActuelle.JaugeSocial < 25) { Program.MaPartie.VieActuelle.JaugeSocial += 10; }
 
-            return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 428);  /// REMPLIR PAR LE NUM DE LA CARTE VAC
+            return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 428);  
         }
         
         private void DeterminerCartesEvent(Evenement evenement)
@@ -369,27 +367,17 @@ namespace App
                     Mourir();
                 }
 
-
-                // récupérer tous les objets possibles dans un tableau de string
-                string [] split = carteActuelle.ObjetPossible.Split(new char[] { '&' });
-                //Pour chaque objet possible
-                foreach (string objetPossibleString in split)
+                
                 if (carteActuelle.ObjetPossible != "")
                 {
-                    char[] objetPossibleChar = objetPossibleString.ToCharArray();
-                    if (objetPossibleChar[0]==idObjet)
                     // récupérer tous les objets possibles dans un tableau de string
                     string[] split = carteActuelle.ObjetPossible.Split(new char[] { '&' });
                     //Pour chaque objet possible
                     foreach (string objetPossibleString in split)
                     {
-                        // l'objet a une application sur cette carte !
-                        int idCarte = 0;
-                        for (int i=0; i<objetPossibleChar.Length; i++)
                         char[] objetPossibleChar = objetPossibleString.ToCharArray();
                         if (objetPossibleChar[0] == idObjet)
                         {
-                            idCarte += ((int)objetPossibleChar[i + 1]) * ((int)Math.Pow(10, i));
                             // l'objet a une application sur cette carte !
                             int idCarte = 0;
                             for (int i = 0; i < objetPossibleChar.Length; i++)
@@ -398,7 +386,6 @@ namespace App
                             }
                             return idCarte;
                         }
-                        return idCarte;
                     }
                 }
             }
@@ -488,12 +475,9 @@ namespace App
             }
 
             // Test de mort (Jauge)
-            Carte carteJaugeMort = TestJaugeMort();
-            if (carteJaugeMort != null)
             int idMort = TestJaugeMort();
             if (idMort != -1)
             {
-                carteActuelle = carteJaugeMort;
                 carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
                 return;
             }
@@ -519,9 +503,7 @@ namespace App
             if (rep.BoolCycle != "")
             {
                 char[] charBoolCycle = rep.BoolCycle.ToCharArray();
-                if (charBoolCycle[0] == '+') { Program.MaPartie.VieActuelle.MettreVraiBoolCycle((int)charBoolCycle[1]); }
-                else { Program.MaPartie.VieActuelle.MettreFauxBoolCycle((int)charBoolCycle[1]); }
-            }
+                
                 if (charBoolCycle[1] != '3')
                 {
                     if (charBoolCycle[0] == '+')
@@ -736,9 +718,5 @@ namespace App
             EffetObjet(btnObjet7.Text);
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bb3e1e30e54f8da7c2da0376761a8fc94138ccb1
     }
 }
