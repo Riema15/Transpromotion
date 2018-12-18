@@ -36,7 +36,6 @@ namespace App
             InitializeComponent();
             listeBtnObjet = new List<Button> { btnObjet0, btnObjet1, btnObjet2, btnObjet3, btnObjet4, btnObjet5, btnObjet6, btnObjet7 };
             carteAVenir = new List<Carte>();
-            txtNbJour.Text = 0.ToString();
             carteTourSuivant = null;
             valNbJour.Text = 0.ToString();
             txtNomCycle.Text = Program.MaPartie.VieActuelle.Nom;
@@ -411,7 +410,6 @@ namespace App
             AfficherJauge();
 
             // Effet à modifier 
-            //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET DID SUP A 9
             //ATTENTION CE CODE NE FONCTIONNE QUE TANT QUIL NY A PAS DEFFET D'ID SUP A 9
             if (rep.ChgtEffet != "")
             {
@@ -445,12 +443,7 @@ namespace App
                 }
             }
 
-            // La carte suivant immédiatement
-            if (rep.CarteSuivante != 0)
-            {
-                carteActuelle =  ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);         
-                return;
-            }
+            
             
             if (rep.DebutEvent!=0)
             {
@@ -461,10 +454,17 @@ namespace App
             
             if (idMort != -1)
             {                
-                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
+                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
                 return;
             }
-            
+
+            // La carte suivant immédiatement
+            if (rep.CarteSuivante != 0)
+            {
+                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
+                return;
+            }
+
             // Fin des effets actifs AU PIF
             foreach (Effet effet in Program.MaPartie.VieActuelle.Effets)
             {
@@ -508,10 +508,8 @@ namespace App
                         carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 102));
                     }
                 }
-           }
-            
+           }            
             carteActuelle = ChoisirCarte();
-            Console.WriteLine(carteActuelle.Id);
         }
 
         public Carte ChoisirCarte()
@@ -520,13 +518,11 @@ namespace App
             Program.MaPartie.VieActuelle.NbJour++;
             MajNbJour();
 
-
-
             //Arrêt du code :
             if (Program.MaPartie.VieActuelle.NbJour==136)
             {
                 Mourir();
-                txtCarteContenu.Text = "Bravo, vous êtes arrivez à la fin du jeu ! </br> Vous pouvez nous soutenir en nous payant un café ! Ou en nous proposant de nouvelles idées... </br> Pour nous contacter : mgibert001@ensc.fr";
+                txtCarteContenu.Text = "Bravo, vous êtes arrivez à la fin du jeu ! <br /> Vous pouvez nous soutenir en nous payant un café ! Ou en nous proposant de nouvelles idées... <br /> Pour nous contacter : mgibert001@ensc.fr";
                 btnReponse1.Text = "Merci d'avoir joué !";
                 btnReponse2.Text = "Bonne journée !";
             }
