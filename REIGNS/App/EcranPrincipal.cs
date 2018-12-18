@@ -63,7 +63,7 @@ namespace App
                 listeAfficher.Add(AfficherTexte(taille, cut2));
             }
             else { listeAfficher.Add(cut2); }
-            return String.Join("-<br>", listeAfficher.ToArray());
+            return String.Join("-<br />", listeAfficher.ToArray());
         }
         public void AfficherCarte(Carte carte)
         {
@@ -160,14 +160,12 @@ namespace App
         {
             int idMort = Program.MaPartie.TestJaugeMort();
             if (idMort != -1)
-            {
-                
-
+            {              
                 if (((idMort == 384)||(idMort==392)) && (Program.MaPartie.VieActuelle.Ami == true)) { carteTourSuivant = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 439);  }
           
                 return (idMort);
             }
-            return 0;
+            return -1;
         }
 
         public void Mourir()
@@ -226,7 +224,6 @@ namespace App
         private bool ChangerObjet(char[] chgtObjetChar)
         {
             // Change l'état d'un objet renvoie true si ça s'est fait false sinon
-
             if (chgtObjetChar.Length > 1)
             {
                 int idObjet = 0;
@@ -238,10 +235,10 @@ namespace App
                     {
                         idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * ((int)Math.Pow(10, i-1));
                     }
-                    if (Program.MaPartie.Objets[idObjet].Actif != true)
+                    if (Program.MaPartie.Objets[idObjet-1].Actif != true)
                     {
-                        Program.MaPartie.Objets[idObjet].Actif = true;
-                        AfficherObjet(Program.MaPartie.Objets[idObjet]);
+                        Program.MaPartie.Objets[idObjet-1].Actif = true;
+                        AfficherObjet(Program.MaPartie.Objets[idObjet-1]);
                         return true;
                     }
                     else { return false; }
@@ -253,17 +250,15 @@ namespace App
                     {
                         idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * ((int)Math.Pow(10, i-1));
                     }
-                    Program.MaPartie.Objets[idObjet].Actif = false;
-                    EffacerObjet(Program.MaPartie.Objets[idObjet]);
-                    if (Program.MaPartie.Objets[idObjet].Actif == false)
+                    if (Program.MaPartie.Objets[idObjet-1].Actif == false)
                     {
                         // si on ne l'avait déjà pas
                         return false;
                     }
                     else
                     {
-                        Program.MaPartie.Objets[chgtObjetChar[idObjet]].Actif = false;
-                        EffacerObjet(Program.MaPartie.Objets[chgtObjetChar[idObjet]]);
+                        Program.MaPartie.Objets[idObjet-1].Actif = false;
+                        EffacerObjet(Program.MaPartie.Objets[idObjet-1]);
                     }
                 }
                
@@ -400,7 +395,6 @@ namespace App
             }
 
             // Test de Fait de cogniticien
-            if (rep.FaitId != -1)
             if (rep.FaitId != 0)
             {
                 if (Program.MaPartie.Faits[rep.FaitId].Actif == false)
@@ -462,15 +456,15 @@ namespace App
             {
                 DeterminerCartesEvent(((List<Evenement>)Program.MaPartie.Events).Find(x => x.Id == rep.DebutEvent));
             }
-
             // Test de mort (Jauge)
             int idMort = TestJaugeMort();
+            
             if (idMort != -1)
-            {
+            {                
                 carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
                 return;
             }
-
+            
             // Fin des effets actifs AU PIF
             foreach (Effet effet in Program.MaPartie.VieActuelle.Effets)
             {
@@ -515,14 +509,19 @@ namespace App
                     }
                 }
            }
-
-            Console.WriteLine("ok");
+            
             carteActuelle = ChoisirCarte();
             Console.WriteLine(carteActuelle.Id);
         }
 
         public Carte ChoisirCarte()
         {
+            // nombre de jour augmente de 1
+            Program.MaPartie.VieActuelle.NbJour++;
+            MajNbJour();
+
+
+
             //Arrêt du code :
             if (Program.MaPartie.VieActuelle.NbJour==136)
             {
@@ -560,20 +559,9 @@ namespace App
 
                 }
             }
-            
+
             // else { quand on sera sur qu'un event est retrouné quand il en arrive un
 
-                // si carte à venir : 1 chance sur 3
-                if ((carteAVenir.Count != 0) && (random.Next(101) > 66))
-                {
-                    return carteAVenir[random.Next(carteAVenir.Count())];
-                }
-            // nombre de jour augmente de 1
-            Program.MaPartie.VieActuelle.NbJour++;
-            MajNbJour();
-
-                // sinon aléatoire
-                return Program.MaPartie.CartesNoEvent[random.Next(Program.MaPartie.CartesNoEvent.Count())];
             // si carte à venir : 1 chance sur 3
             if ((carteAVenir.Count != 0) && (random.Next(101) > 66))
             {
@@ -582,11 +570,10 @@ namespace App
                 return carte;
             }
 
+            
             // sinon aléatoire
             return Program.MaPartie.CartesNoEvent[random.Next(Program.MaPartie.CartesNoEvent.Count())];
-            int count = (Program.MaPartie.CartesNoEvent.Count());
-            int x = random.Next(count);
-            return Program.MaPartie.CartesNoEvent[x];
+                        
 
             //}
         }

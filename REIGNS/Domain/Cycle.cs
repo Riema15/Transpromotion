@@ -54,7 +54,7 @@ namespace Domain
             JaugeScolaire = 50;
             JaugeSocial = 50;
             JaugeSous = 50;
-            NbJour = 0;
+            NbJour = -1;
             Nom = listeNom[alea.Next(0, listeNom.Count())];
             BadgeAbime = false;
             FormationJE = 0;

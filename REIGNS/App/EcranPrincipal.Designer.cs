@@ -74,9 +74,11 @@
             // txtNomPerso
             // 
             this.txtNomPerso.Controls.Add(this.txtCarteContenu);
-            this.txtNomPerso.Location = new System.Drawing.Point(40, 146);
+            this.txtNomPerso.Location = new System.Drawing.Point(30, 119);
+            this.txtNomPerso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNomPerso.Name = "txtNomPerso";
-            this.txtNomPerso.Size = new System.Drawing.Size(624, 127);
+            this.txtNomPerso.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNomPerso.Size = new System.Drawing.Size(468, 103);
             this.txtNomPerso.TabIndex = 0;
             this.txtNomPerso.TabStop = false;
             this.txtNomPerso.Text = "Nom";
@@ -84,9 +86,10 @@
             // txtCarteContenu
             // 
             this.txtCarteContenu.AutoSize = true;
-            this.txtCarteContenu.Location = new System.Drawing.Point(27, 37);
+            this.txtCarteContenu.Location = new System.Drawing.Point(20, 30);
+            this.txtCarteContenu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtCarteContenu.Name = "txtCarteContenu";
-            this.txtCarteContenu.Size = new System.Drawing.Size(576, 17);
+            this.txtCarteContenu.Size = new System.Drawing.Size(433, 13);
             this.txtCarteContenu.TabIndex = 0;
             this.txtCarteContenu.Text = "12345678901234567890123456789012345678901234567890123456789001234567890";
             // 
@@ -94,9 +97,10 @@
             // 
             this.txtSante.AutoSize = true;
             this.txtSante.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSante.Location = new System.Drawing.Point(74, 94);
+            this.txtSante.Location = new System.Drawing.Point(56, 76);
+            this.txtSante.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtSante.Name = "txtSante";
-            this.txtSante.Size = new System.Drawing.Size(67, 20);
+            this.txtSante.Size = new System.Drawing.Size(57, 17);
             this.txtSante.TabIndex = 1;
             this.txtSante.Text = "Santé : ";
             // 
@@ -104,9 +108,10 @@
             // 
             this.valSante.AutoSize = true;
             this.valSante.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valSante.Location = new System.Drawing.Point(147, 90);
+            this.valSante.Location = new System.Drawing.Point(110, 73);
+            this.valSante.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valSante.Name = "valSante";
-            this.valSante.Size = new System.Drawing.Size(20, 24);
+            this.valSante.Size = new System.Drawing.Size(16, 18);
             this.valSante.TabIndex = 2;
             this.valSante.Text = "0";
             // 
@@ -114,9 +119,10 @@
             // 
             this.valSocial.AutoSize = true;
             this.valSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valSocial.Location = new System.Drawing.Point(293, 90);
+            this.valSocial.Location = new System.Drawing.Point(220, 73);
+            this.valSocial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valSocial.Name = "valSocial";
-            this.valSocial.Size = new System.Drawing.Size(20, 24);
+            this.valSocial.Size = new System.Drawing.Size(16, 18);
             this.valSocial.TabIndex = 4;
             this.valSocial.Text = "0";
             // 
@@ -124,9 +130,10 @@
             // 
             this.txtSocial.AutoSize = true;
             this.txtSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSocial.Location = new System.Drawing.Point(220, 94);
+            this.txtSocial.Location = new System.Drawing.Point(165, 76);
+            this.txtSocial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtSocial.Name = "txtSocial";
-            this.txtSocial.Size = new System.Drawing.Size(70, 20);
+            this.txtSocial.Size = new System.Drawing.Size(58, 17);
             this.txtSocial.TabIndex = 3;
             this.txtSocial.Text = "Social : ";
             // 
@@ -134,9 +141,10 @@
             // 
             this.valScolaire.AutoSize = true;
             this.valScolaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valScolaire.Location = new System.Drawing.Point(457, 90);
+            this.valScolaire.Location = new System.Drawing.Point(343, 73);
+            this.valScolaire.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valScolaire.Name = "valScolaire";
-            this.valScolaire.Size = new System.Drawing.Size(20, 24);
+            this.valScolaire.Size = new System.Drawing.Size(16, 18);
             this.valScolaire.TabIndex = 6;
             this.valScolaire.Text = "0";
             // 
@@ -144,9 +152,10 @@
             // 
             this.txtScolaire.AutoSize = true;
             this.txtScolaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScolaire.Location = new System.Drawing.Point(379, 94);
+            this.txtScolaire.Location = new System.Drawing.Point(284, 76);
+            this.txtScolaire.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtScolaire.Name = "txtScolaire";
-            this.txtScolaire.Size = new System.Drawing.Size(85, 20);
+            this.txtScolaire.Size = new System.Drawing.Size(71, 17);
             this.txtScolaire.TabIndex = 5;
             this.txtScolaire.Text = "Scolaire : ";
             // 
@@ -154,9 +163,10 @@
             // 
             this.valSous.AutoSize = true;
             this.valSous.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valSous.Location = new System.Drawing.Point(602, 90);
+            this.valSous.Location = new System.Drawing.Point(452, 73);
+            this.valSous.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valSous.Name = "valSous";
-            this.valSous.Size = new System.Drawing.Size(20, 24);
+            this.valSous.Size = new System.Drawing.Size(16, 18);
             this.valSous.TabIndex = 8;
             this.valSous.Text = "0";
             // 
@@ -164,17 +174,19 @@
             // 
             this.txtSous.AutoSize = true;
             this.txtSous.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSous.Location = new System.Drawing.Point(529, 94);
+            this.txtSous.Location = new System.Drawing.Point(397, 76);
+            this.txtSous.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtSous.Name = "txtSous";
-            this.txtSous.Size = new System.Drawing.Size(62, 20);
+            this.txtSous.Size = new System.Drawing.Size(52, 17);
             this.txtSous.TabIndex = 7;
             this.txtSous.Text = "Sous : ";
             // 
             // btnReponse1
             // 
-            this.btnReponse1.Location = new System.Drawing.Point(117, 279);
+            this.btnReponse1.Location = new System.Drawing.Point(88, 227);
+            this.btnReponse1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReponse1.Name = "btnReponse1";
-            this.btnReponse1.Size = new System.Drawing.Size(228, 95);
+            this.btnReponse1.Size = new System.Drawing.Size(171, 77);
             this.btnReponse1.TabIndex = 9;
             this.btnReponse1.Text = "ok1";
             this.btnReponse1.UseVisualStyleBackColor = true;
@@ -182,9 +194,10 @@
             // 
             // btnReponse2
             // 
-            this.btnReponse2.Location = new System.Drawing.Point(403, 279);
+            this.btnReponse2.Location = new System.Drawing.Point(302, 227);
+            this.btnReponse2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReponse2.Name = "btnReponse2";
-            this.btnReponse2.Size = new System.Drawing.Size(228, 95);
+            this.btnReponse2.Size = new System.Drawing.Size(171, 77);
             this.btnReponse2.TabIndex = 10;
             this.btnReponse2.Text = "ok2";
             this.btnReponse2.UseVisualStyleBackColor = true;
@@ -194,9 +207,10 @@
             // 
             this.txtNomCycle.AutoSize = true;
             this.txtNomCycle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomCycle.Location = new System.Drawing.Point(126, 34);
+            this.txtNomCycle.Location = new System.Drawing.Point(94, 28);
+            this.txtNomCycle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtNomCycle.Name = "txtNomCycle";
-            this.txtNomCycle.Size = new System.Drawing.Size(123, 32);
+            this.txtNomCycle.Size = new System.Drawing.Size(95, 26);
             this.txtNomCycle.TabIndex = 11;
             this.txtNomCycle.Text = "TonNom";
             // 
@@ -204,9 +218,10 @@
             // 
             this.txtNbJour.AutoSize = true;
             this.txtNbJour.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNbJour.Location = new System.Drawing.Point(421, 44);
+            this.txtNbJour.Location = new System.Drawing.Point(316, 36);
+            this.txtNbJour.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtNbJour.Name = "txtNbJour";
-            this.txtNbJour.Size = new System.Drawing.Size(139, 20);
+            this.txtNbJour.Size = new System.Drawing.Size(118, 17);
             this.txtNbJour.TabIndex = 12;
             this.txtNbJour.Text = "Nombre de jour : ";
             // 
@@ -214,80 +229,89 @@
             // 
             this.valNbJour.AutoSize = true;
             this.valNbJour.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valNbJour.Location = new System.Drawing.Point(566, 40);
+            this.valNbJour.Location = new System.Drawing.Point(424, 32);
+            this.valNbJour.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valNbJour.Name = "valNbJour";
-            this.valNbJour.Size = new System.Drawing.Size(20, 24);
+            this.valNbJour.Size = new System.Drawing.Size(16, 18);
             this.valNbJour.TabIndex = 13;
             this.valNbJour.Text = "0";
             // 
             // btnObjet0
             // 
-            this.btnObjet0.Location = new System.Drawing.Point(16, 400);
+            this.btnObjet0.Location = new System.Drawing.Point(12, 325);
+            this.btnObjet0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet0.Name = "btnObjet0";
-            this.btnObjet0.Size = new System.Drawing.Size(70, 41);
+            this.btnObjet0.Size = new System.Drawing.Size(52, 42);
             this.btnObjet0.TabIndex = 14;
             this.btnObjet0.UseVisualStyleBackColor = true;
             this.btnObjet0.Click += new System.EventHandler(this.btnObjet0_Click);
             // 
             // btnObjet1
             // 
-            this.btnObjet1.Location = new System.Drawing.Point(98, 400);
+            this.btnObjet1.Location = new System.Drawing.Point(74, 325);
+            this.btnObjet1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet1.Name = "btnObjet1";
-            this.btnObjet1.Size = new System.Drawing.Size(69, 41);
+            this.btnObjet1.Size = new System.Drawing.Size(52, 42);
             this.btnObjet1.TabIndex = 15;
             this.btnObjet1.UseVisualStyleBackColor = true;
             this.btnObjet1.Click += new System.EventHandler(this.btnObjet1_Click);
             // 
             // btnObjet2
             // 
-            this.btnObjet2.Location = new System.Drawing.Point(180, 400);
+            this.btnObjet2.Location = new System.Drawing.Point(135, 325);
+            this.btnObjet2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet2.Name = "btnObjet2";
-            this.btnObjet2.Size = new System.Drawing.Size(69, 41);
+            this.btnObjet2.Size = new System.Drawing.Size(52, 42);
             this.btnObjet2.TabIndex = 16;
             this.btnObjet2.UseVisualStyleBackColor = true;
             this.btnObjet2.Click += new System.EventHandler(this.btnObjet2_Click);
             // 
             // btnObjet5
             // 
-            this.btnObjet5.Location = new System.Drawing.Point(445, 400);
+            this.btnObjet5.Location = new System.Drawing.Point(334, 325);
+            this.btnObjet5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet5.Name = "btnObjet5";
-            this.btnObjet5.Size = new System.Drawing.Size(69, 41);
+            this.btnObjet5.Size = new System.Drawing.Size(52, 42);
             this.btnObjet5.TabIndex = 19;
             this.btnObjet5.UseVisualStyleBackColor = true;
             this.btnObjet5.Click += new System.EventHandler(this.btnObjet5_Click);
             // 
             // btnObjet4
             // 
-            this.btnObjet4.Location = new System.Drawing.Point(356, 400);
+            this.btnObjet4.Location = new System.Drawing.Point(267, 325);
+            this.btnObjet4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet4.Name = "btnObjet4";
-            this.btnObjet4.Size = new System.Drawing.Size(69, 41);
+            this.btnObjet4.Size = new System.Drawing.Size(52, 42);
             this.btnObjet4.TabIndex = 18;
             this.btnObjet4.UseVisualStyleBackColor = true;
             this.btnObjet4.Click += new System.EventHandler(this.btnObjet4_Click);
             // 
             // btnObjet3
             // 
-            this.btnObjet3.Location = new System.Drawing.Point(270, 400);
+            this.btnObjet3.Location = new System.Drawing.Point(202, 325);
+            this.btnObjet3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet3.Name = "btnObjet3";
-            this.btnObjet3.Size = new System.Drawing.Size(69, 41);
+            this.btnObjet3.Size = new System.Drawing.Size(52, 42);
             this.btnObjet3.TabIndex = 17;
             this.btnObjet3.UseVisualStyleBackColor = true;
             this.btnObjet3.Click += new System.EventHandler(this.btnObjet3_Click);
             // 
             // btnObjet7
             // 
-            this.btnObjet7.Location = new System.Drawing.Point(612, 400);
+            this.btnObjet7.Location = new System.Drawing.Point(459, 325);
+            this.btnObjet7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet7.Name = "btnObjet7";
-            this.btnObjet7.Size = new System.Drawing.Size(69, 41);
+            this.btnObjet7.Size = new System.Drawing.Size(52, 42);
             this.btnObjet7.TabIndex = 21;
             this.btnObjet7.UseVisualStyleBackColor = true;
             this.btnObjet7.Click += new System.EventHandler(this.btnObjet7_Click);
             // 
             // btnObjet6
             // 
-            this.btnObjet6.Location = new System.Drawing.Point(528, 400);
+            this.btnObjet6.Location = new System.Drawing.Point(396, 325);
+            this.btnObjet6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObjet6.Name = "btnObjet6";
-            this.btnObjet6.Size = new System.Drawing.Size(69, 41);
+            this.btnObjet6.Size = new System.Drawing.Size(52, 42);
             this.btnObjet6.TabIndex = 20;
             this.btnObjet6.UseVisualStyleBackColor = true;
             this.btnObjet6.Click += new System.EventHandler(this.btnObjet6_Click);
@@ -298,18 +322,20 @@
             this.txtNouveauFait.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.txtNouveauFait.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNouveauFait.ForeColor = System.Drawing.Color.DarkRed;
-            this.txtNouveauFait.Location = new System.Drawing.Point(294, 126);
+            this.txtNouveauFait.Location = new System.Drawing.Point(220, 102);
+            this.txtNouveauFait.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtNouveauFait.Name = "txtNouveauFait";
-            this.txtNouveauFait.Size = new System.Drawing.Size(92, 17);
+            this.txtNouveauFait.Size = new System.Drawing.Size(71, 13);
             this.txtNouveauFait.TabIndex = 22;
             this.txtNouveauFait.Text = "Nouveau Fait";
             // 
             // imMoinsSous
             // 
             this.imMoinsSous.Image = global::App.Properties.Resources.sort_down;
-            this.imMoinsSous.Location = new System.Drawing.Point(628, 99);
+            this.imMoinsSous.Location = new System.Drawing.Point(471, 80);
+            this.imMoinsSous.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imMoinsSous.Name = "imMoinsSous";
-            this.imMoinsSous.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSous.Size = new System.Drawing.Size(15, 20);
             this.imMoinsSous.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsSous.TabIndex = 30;
             this.imMoinsSous.TabStop = false;
@@ -318,9 +344,10 @@
             // imPlusSous
             // 
             this.imPlusSous.Image = global::App.Properties.Resources.caret_arrow_up;
-            this.imPlusSous.Location = new System.Drawing.Point(628, 74);
+            this.imPlusSous.Location = new System.Drawing.Point(471, 60);
+            this.imPlusSous.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imPlusSous.Name = "imPlusSous";
-            this.imPlusSous.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSous.Size = new System.Drawing.Size(15, 20);
             this.imPlusSous.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusSous.TabIndex = 29;
             this.imPlusSous.TabStop = false;
@@ -329,9 +356,10 @@
             // imMoinsScolaire
             // 
             this.imMoinsScolaire.Image = global::App.Properties.Resources.sort_down;
-            this.imMoinsScolaire.Location = new System.Drawing.Point(483, 99);
+            this.imMoinsScolaire.Location = new System.Drawing.Point(362, 80);
+            this.imMoinsScolaire.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imMoinsScolaire.Name = "imMoinsScolaire";
-            this.imMoinsScolaire.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsScolaire.Size = new System.Drawing.Size(15, 20);
             this.imMoinsScolaire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsScolaire.TabIndex = 28;
             this.imMoinsScolaire.TabStop = false;
@@ -340,9 +368,10 @@
             // imPlusScolaire
             // 
             this.imPlusScolaire.Image = global::App.Properties.Resources.caret_arrow_up;
-            this.imPlusScolaire.Location = new System.Drawing.Point(483, 74);
+            this.imPlusScolaire.Location = new System.Drawing.Point(362, 60);
+            this.imPlusScolaire.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imPlusScolaire.Name = "imPlusScolaire";
-            this.imPlusScolaire.Size = new System.Drawing.Size(20, 24);
+            this.imPlusScolaire.Size = new System.Drawing.Size(15, 20);
             this.imPlusScolaire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusScolaire.TabIndex = 27;
             this.imPlusScolaire.TabStop = false;
@@ -351,9 +380,10 @@
             // imMoinsSocial
             // 
             this.imMoinsSocial.Image = global::App.Properties.Resources.sort_down;
-            this.imMoinsSocial.Location = new System.Drawing.Point(319, 99);
+            this.imMoinsSocial.Location = new System.Drawing.Point(239, 80);
+            this.imMoinsSocial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imMoinsSocial.Name = "imMoinsSocial";
-            this.imMoinsSocial.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSocial.Size = new System.Drawing.Size(15, 20);
             this.imMoinsSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsSocial.TabIndex = 26;
             this.imMoinsSocial.TabStop = false;
@@ -362,9 +392,10 @@
             // imPlusSocial
             // 
             this.imPlusSocial.Image = global::App.Properties.Resources.caret_arrow_up;
-            this.imPlusSocial.Location = new System.Drawing.Point(319, 74);
+            this.imPlusSocial.Location = new System.Drawing.Point(239, 60);
+            this.imPlusSocial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imPlusSocial.Name = "imPlusSocial";
-            this.imPlusSocial.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSocial.Size = new System.Drawing.Size(15, 20);
             this.imPlusSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusSocial.TabIndex = 25;
             this.imPlusSocial.TabStop = false;
@@ -373,9 +404,10 @@
             // imMoinsSante
             // 
             this.imMoinsSante.Image = global::App.Properties.Resources.sort_down;
-            this.imMoinsSante.Location = new System.Drawing.Point(173, 105);
+            this.imMoinsSante.Location = new System.Drawing.Point(130, 85);
+            this.imMoinsSante.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imMoinsSante.Name = "imMoinsSante";
-            this.imMoinsSante.Size = new System.Drawing.Size(20, 24);
+            this.imMoinsSante.Size = new System.Drawing.Size(15, 20);
             this.imMoinsSante.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsSante.TabIndex = 24;
             this.imMoinsSante.TabStop = false;
@@ -384,9 +416,10 @@
             // imPlusSante
             // 
             this.imPlusSante.Image = global::App.Properties.Resources.caret_arrow_up;
-            this.imPlusSante.Location = new System.Drawing.Point(173, 80);
+            this.imPlusSante.Location = new System.Drawing.Point(130, 65);
+            this.imPlusSante.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imPlusSante.Name = "imPlusSante";
-            this.imPlusSante.Size = new System.Drawing.Size(20, 24);
+            this.imPlusSante.Size = new System.Drawing.Size(15, 20);
             this.imPlusSante.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusSante.TabIndex = 23;
             this.imPlusSante.TabStop = false;
@@ -394,7 +427,7 @@
             // 
             // EcranPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.imMoinsSous);
             this.Controls.Add(this.imPlusSous);
@@ -427,8 +460,9 @@
             this.Controls.Add(this.valSante);
             this.Controls.Add(this.txtSante);
             this.Controls.Add(this.txtNomPerso);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EcranPrincipal";
-            this.Size = new System.Drawing.Size(717, 474);
+            this.Size = new System.Drawing.Size(538, 385);
             this.txtNomPerso.ResumeLayout(false);
             this.txtNomPerso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imMoinsSous)).EndInit();
