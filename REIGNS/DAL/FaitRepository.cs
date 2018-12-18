@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Domain;
+using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -11,6 +11,7 @@ namespace DAL
     {
         public IList<Fait> GetAll()
         {
+            Console.WriteLine(Session.Query<Fait>());
             return Session.Query<Fait>().ToList();
         }
 

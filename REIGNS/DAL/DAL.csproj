@@ -86,6 +86,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DB\contains.sql" />
     <Content Include="DB\database.sql" />
     <Content Include="DB\structure.sql" />
     <Content Include="hibernate.cfg.xml">

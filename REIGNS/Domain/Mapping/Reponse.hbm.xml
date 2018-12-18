@@ -20,6 +20,7 @@
     <property name="CarteAVenir" column="rep_carte_avenir" />
     <property name="BoolCycle" column="rep_cycle" />
     <property name="DebutEvent" column="rep_debutEvent" />
+
   </class>
 
 </hibernate-mapping>

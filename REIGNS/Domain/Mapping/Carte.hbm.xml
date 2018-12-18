@@ -14,19 +14,10 @@
     <property name="ObjetPossible" column="carte_obj" not-null="true"/>
 
 
-    <bag name="Personnage" cascade="all" lazy="true">
-      <key column="pers_id"/>
-      <one-to-one class="personnage"/>
-    </bag>
-    <bag name="Rep1" cascade="all" lazy="true">
-      <key column="rep_id1"/>
-      <one-to-one class="reponse"/>
-    </bag>
-    <bag name="Rep2" cascade="all" lazy="true">
-      <key column="rep_id2"/>
-      <one-to-one class="reponse"/>
-    </bag>
-
+    <many-to-one name="Rep1" unique="true" cascade="all" column="rep_id1" />
+    <many-to-one name="Rep2" unique="true" cascade="all" column="rep_id2" />
+    <many-to-one name="Personnage" unique="true" cascade="all" column="pers_id" />
+    
   </class>
 
 </hibernate-mapping>

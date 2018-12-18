@@ -49,8 +49,8 @@ CREATE TABLE `effet` (
   `ef_nom` text COLLATE utf8_unicode_ci NOT NULL,
   `ef_sco` int(11) NOT NULL,
   `ef_sous` int(11) NOT NULL,
-  `ef_soc` int(11) NOT NULL,
-  `ef_sante` int(11) NOT NULL
+  `ef_sante` int(11) NOT NULL,
+  `ef_soc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------

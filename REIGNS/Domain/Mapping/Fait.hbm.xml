@@ -2,7 +2,7 @@
 
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="Domain"
-                   namespace="Domain">H:\2A\transpromo\Transpromotion\REIGNS\Domain\Fait.cs
+                   namespace="Domain">
 
   <class name="Fait" table="fait">
     <id name="Id" column="f_id" type="int">
@@ -10,7 +10,6 @@
     </id>
     <property name="Nom" column="f_nom" not-null="true"/>
     <property name="Description" column="f_desc" not-null="true"/>
- 
 
   </class>
 

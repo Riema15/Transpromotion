@@ -11,7 +11,7 @@
       NHibernate.Driver.MySqlDataDriver
     </property>
     <property name="connection.connection_string">
-      Server=localhost;Database=reignsensc;User ID=reigns_ensc;Password=secret;
+      Server=localhost;Database=reignsensc;User ID=reignsEnsc_user;Password=secret;
     </property>
     <property name="dialect">
       NHibernate.Dialect.MySQL5Dialect
