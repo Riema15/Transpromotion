@@ -63,17 +63,13 @@ namespace App
             }
             else { listeAfficher.Add(cut2); }
             return String.Join("-<br />", listeAfficher.ToArray());
-        }
+        } // a supp
+
         public void AfficherCarte(Carte carte)
         {
             //Afficher les informatiosn propres à la carte
             txtNomPerso.Text = carte.Personnage.NomPerso;
-            if (carte.Text.Length > 70)
-            {
-                txtCarteContenu.Text = AfficherTexte(70, carte.Text);                
-            }
-            else { txtCarteContenu.Text = carte.Text; }
-
+           txtCarteContenu.Text = carte.Text;
             //Afficher les réponses possibles    
              btnReponse1.Text = carte.Rep1.Text; 
              btnReponse2.Text = carte.Rep2.Text;
@@ -226,18 +222,19 @@ namespace App
             if (chgtObjetChar.Length > 1)
             {
                 int idObjet = 0;
-
+                int j = 0;
                 // Nouvel Objet = "+id"
                 if (chgtObjetChar[0] == '+')
                 {
-                    for (int i = 1; i < chgtObjetChar.Length; i++)
+                    for (int i = chgtObjetChar.Length-1; i > 0; i--)
                     {
-                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * ((int)Math.Pow(10, i-1));
+                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * (int) Math.Pow(10,j) ;
+                        j++;
                     }
-                    if (Program.MaPartie.Objets[idObjet-1].Actif != true)
+                    if (((List<Objet>)Program.MaPartie.Objets).Find(x  => x.Id==idObjet).Actif != true)
                     {
-                        Program.MaPartie.Objets[idObjet-1].Actif = true;
-                        AfficherObjet(Program.MaPartie.Objets[idObjet-1]);
+                        ((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet).Actif = true;
+                        AfficherObjet(((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet));
                         return true;
                     }
                     else { return false; }
@@ -245,19 +242,21 @@ namespace App
                 // Perdre un objet = "-id"
                 if (chgtObjetChar[0] == '-')
                 {
-                    for (int i = 0; i < chgtObjetChar.Length; i++)
+                    for (int i = chgtObjetChar.Length-1; i > 0; i--)
                     {
-                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * ((int)Math.Pow(10, i-1));
+                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * (int)Math.Pow(10, j);
+                        j++;
+
                     }
-                    if (Program.MaPartie.Objets[idObjet-1].Actif == false)
+                    if (((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet).Actif == false)
                     {
                         // si on ne l'avait déjà pas
                         return false;
                     }
                     else
                     {
-                        Program.MaPartie.Objets[idObjet-1].Actif = false;
-                        EffacerObjet(Program.MaPartie.Objets[idObjet-1]);
+                        ((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet).Actif = false;
+                        EffacerObjet(((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet));
                     }
                 }
                
@@ -366,9 +365,11 @@ namespace App
                         {
                             // l'objet a une application sur cette carte !
                             int idCarte = 0;
-                            for (int i = 0; i < objetPossibleChar.Length; i++)
+                            int j = 0;
+                            for (int i = objetPossibleChar.Length-1; i>0 ; i--)
                             {
-                                idCarte += ((int)objetPossibleChar[i + 1]) * ((int)Math.Pow(10, i));
+                                idCarte += ((int)objetPossibleChar[i]) * ((int)Math.Pow(10,j));
+                                j++;
                             }
                             return idCarte;
                         }
@@ -416,13 +417,15 @@ namespace App
                 char[] chgtEffetChar = rep.ChgtEffet.ToCharArray();
                 if (chgtEffetChar[0] == '+')
                 {
-                    Program.MaPartie.VieActuelle.Effets[chgtEffetChar[1]].Actif = true;
-                    AfficherEffet(Program.MaPartie.VieActuelle.Effets[chgtEffetChar[1]]);
+                    Effet effet = ((List<Effet>)Program.MaPartie.VieActuelle.Effets).Find(x => x.Id == ((int)char.GetNumericValue(chgtEffetChar[1])));
+                   effet.Actif = true;
+                    AfficherEffet(effet);
                 }
                 if (chgtEffetChar[0] == '-')
                 {
-                    Program.MaPartie.VieActuelle.Effets[chgtEffetChar[1]].Actif = false;
-                    EffacerEffet(Program.MaPartie.VieActuelle.Effets[chgtEffetChar[1]]);
+                    Effet effet = ((List<Effet>)Program.MaPartie.VieActuelle.Effets).Find(x => x.Id == ((int)char.GetNumericValue(chgtEffetChar[1])));
+                    effet.Actif = false;
+                    EffacerEffet(effet);
                 }
 
             }

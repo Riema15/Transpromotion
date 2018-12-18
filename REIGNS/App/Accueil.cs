@@ -25,7 +25,11 @@ namespace App
         private void btnJouer_Click(object sender, EventArgs e)
         {
             Program.MaPartie.VieActuelle = new Cycle();
-            //Program.MaPartie.VieActuelle.Effets = Program.effetRep.GetAll();
+            Program.MaPartie.VieActuelle.Effets = Program.effetRep.GetAll();
+            foreach (Effet ef in Program.MaPartie.VieActuelle.Effets)
+            {
+                Console.WriteLine(ef.Nom);
+            }
             EcranPrincipal userControlEcranPrinp = new EcranPrincipal();
             ((Gestionnaire)this.Parent).ChangeControl(userControlEcranPrinp);
         }
