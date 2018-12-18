@@ -387,7 +387,7 @@ namespace App
             // Test de la mort (effet carte)
             if (rep.MortId != 0)
             {
-                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.MortId);
+                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
                 ((List<Mort>)Program.MaPartie.Morts).Find(x => x.Id == rep.MortId).Actif = true;
                 Mourir();
                 return;
@@ -429,17 +429,21 @@ namespace App
 
             // Objet à modifier
             if (rep.ChgtObjet != "")
-            // Nouveau = "+id", Perte = "-id", Evolution = "-id1+id2"
+            // Nouveau = "+id", Perte = "-id", Evolution = "-id1,+id2"
             {
                 bool continuer = true;
                 // Pour chaque objet
-                string[] split = rep.ChgtObjet.Split(new char[] { '&' });
-                foreach (string chgtObjetString in split)
+                string[] splitEsperluette = rep.ChgtObjet.Split(new char[] { '&' });
+                Console.WriteLine(splitEsperluette.Count());
+                foreach (string chgtObjetsString in splitEsperluette)
                 {
-                    char[] chgtObjetChar = chgtObjetString.ToCharArray();
-                    ChangerObjet(chgtObjetChar);
-                    continuer = ChangerObjet(chgtObjetChar);
-                    if (continuer==false) { split = new string[0]; }
+                    string[] splitVirgule = chgtObjetsString.Split(new char[] { ',' });
+                    foreach (string chgtObjetString in splitVirgule)
+                    {
+                        char[] chgtObjetChar = chgtObjetString.ToCharArray();
+                        continuer = ChangerObjet(chgtObjetChar);
+                        if (continuer == false) { splitVirgule = new string[0]; }
+                    }
                 }
             }
 
@@ -583,11 +587,13 @@ namespace App
                 int idObjet = -1;
                 foreach (Objet objet in Program.MaPartie.Objets)
                 {
+                    Console.WriteLine("Objet :" + objet.Nom + " Nom :" + txtBtn + "; bool=" + (txtBtn == objet.Nom));
                     if (txtBtn == objet.Nom) { idObjet = objet.Id; }
                 }
-
+                Console.WriteLine("objetId :"+idObjet);
                 // récupérer l'id de la carte suivante si l'objet peut être utilisé
                 int idCarte = UtiliserObjet(idObjet);
+                Console.WriteLine("idCarte"+idCarte);
                 // Si utilisable
                 if (idCarte != -1)
                 {
@@ -649,6 +655,7 @@ namespace App
         private void btnObjet0_Click(object sender, EventArgs e)
         {
             EffetObjet(btnObjet0.Text);
+            Console.WriteLine(btnObjet0.Text);
         }
 
         private void btnObjet1_Click(object sender, EventArgs e)
