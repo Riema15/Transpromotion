@@ -21,5 +21,6 @@
 
     <!-- mapping files -->
     <mapping assembly="Domain" />
+
   </session-factory>
 </hibernate-configuration>

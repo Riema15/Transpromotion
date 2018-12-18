@@ -10,14 +10,15 @@
     </id>
 
     <property name="NumEvent" column="carte_num_event" not-null="true"/>
+
+    <many-to-one name="Personnage" class="Personnage" unique="true" column="pers_id" />
     <property name="Text" column="carte_txt" not-null="true"/>
+
+
+    <many-to-one name="Rep1" class="Reponse" column="rep_id1" />
+    <many-to-one name="Rep2"  class="Reponse" column="rep_id2" />
+
     <property name="ObjetPossible" column="carte_obj" not-null="true"/>
-
-
-    <many-to-one name="Rep1" unique="true" cascade="all" column="rep_id1" />
-    <many-to-one name="Rep2" unique="true" cascade="all" column="rep_id2" />
-    <many-to-one name="Personnage" unique="true" cascade="all" column="pers_id" />
-    
   </class>
 
 </hibernate-mapping>

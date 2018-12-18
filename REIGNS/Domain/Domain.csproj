@@ -71,10 +71,10 @@
     <EmbeddedResource Include="Mapping\Reponse.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Mapping\Effet.hbm.xml" />
-    <Content Include="Mapping\Evenement.hbm.xml" />
-    <Content Include="Mapping\Fait.hbm.xml" />
-    <Content Include="Mapping\Mort.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Effet.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Evenement.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Fait.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Mort.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

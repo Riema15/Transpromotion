@@ -8,12 +8,12 @@
     <id name="Id" column="ef_id" type="int">
       <generator class="native"></generator>
     </id>
-    <property name="Nom" column="ef_nom" not-null="true"/>
-    <property name="EffetScolaire" column="ef_sco"/>
-    <property name="EffetSous" column="ef_sous"/>
-    <property name="EffetSocial" column="ef_soc"/>
-    <property name="EffetSante" column="ef_sante"/>
 
+    <property name="Nom" column="ef_nom" not-null="true"/>
+    <property name="EffetScolaire" column="ef_sco" not-null="true"/>
+    <property name="EffetSous" column="ef_sous" not-null="true"/>
+    <property name="EffetSante" column="ef_sante" not-null="true"/>
+    <property name="EffetSocial" column="ef_soc" not-null="true"/>
   </class>
 
 </hibernate-mapping>

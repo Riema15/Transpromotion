@@ -12,11 +12,6 @@
     <property name="JourHappen" column="event_jour" not-null="true"/>
     <property name="NbCarteTirer" column="event_nbjour" not-null="true"/>
 
-    <bag name="CartesConcernees" cascade="all" lazy="true">
-      <key column="event_id"/>
-    <one-to-many class="carte"/>
-    </bag>
-
   </class>
   
 </hibernate-mapping>

@@ -17,7 +17,7 @@ namespace App
         public static Partie MaPartie = new Partie();
 
         
-        public static CarteRepository carteRep;
+        
         public static ReponseRepository reponseRep;
         public static FaitRepository faitRep;
         public static MortRepository mortRep;
@@ -25,15 +25,16 @@ namespace App
         public static ObjetRepository objetRep;
         public static PersonnageRepository persoRep;
         public static EvenementRepository eventRep;
-        
+        public static CarteRepository carteRep;
 
 
         static void Main(string[] args)
         {
-
+           
             
+
             // initialiser les repository
-            carteRep = new CarteRepository();
+            
             reponseRep = new ReponseRepository();
             faitRep = new FaitRepository();
             mortRep = new MortRepository();
@@ -41,15 +42,17 @@ namespace App
             objetRep = new ObjetRepository();
             persoRep = new PersonnageRepository();
             eventRep = new EvenementRepository();
+            carteRep = new CarteRepository();
 
             // les ranger dans la partie
+
             
+            MaPartie.CartesSpeciales = carteRep.GetCartesSpeciales();
+            MaPartie.CartesNoEvent = carteRep.GetCarteNotEvent();
             MaPartie.Objets = objetRep.GetAll();
             MaPartie.Faits = faitRep.GetAll();
             MaPartie.Morts = mortRep.GetAll();
-            MaPartie.CartesSpeciales = carteRep.GetCartesSpeciales();
-            MaPartie.CartesNoEvent = carteRep.GetCarteNotEvent();
-            MaPartie.Events = eventRep.GetAll();
+            MaPartie.Events = eventRep.GetAll(carteRep);
 
             Console.WriteLine("Nb objet : "+MaPartie.Objets.Count());
             Console.WriteLine("Nb fait : " + MaPartie.Faits.Count());
@@ -135,7 +138,7 @@ namespace App
 
             Console.WriteLine("Liste des evenements :");
             EvenementRepository eventRep = new EvenementRepository();
-            IList<Evenement> Evenements = eventRep.GetAll();
+            IList<Evenement> Evenements = eventRep.GetAll(carteRep);
             foreach (Evenement ev in Evenements)
             {
                 Console.WriteLine(ev.Nom);

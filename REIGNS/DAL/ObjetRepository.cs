@@ -11,13 +11,10 @@ namespace DAL
     {
         public IList<Objet> GetAll()
         {
-            Console.WriteLine(Session.Query<Objet>().ToList());
-            Console.WriteLine(Session.Query<Objet>());
-            Console.WriteLine(Session.ToString());
             return Session.Query<Objet>().ToList();
         }
 
-        public void Save(Object objet)
+        public void Save(Objet objet)
         {
             Session.SaveOrUpdate(objet);
             Session.Flush();

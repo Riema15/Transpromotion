@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="Domain"
                    namespace="Domain">
@@ -21,6 +22,7 @@
     <property name="BoolCycle" column="rep_cycle" />
     <property name="DebutEvent" column="rep_debutEvent" />
 
+    
   </class>
 
 </hibernate-mapping>

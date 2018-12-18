@@ -11,7 +11,6 @@ namespace Domain
 
         public virtual Personnage Personnage { get; set; }
      
-
         public virtual Reponse Rep1 { get; set; }
 
         public virtual Reponse Rep2 { get; set; }

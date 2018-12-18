@@ -63,7 +63,6 @@ namespace App
                 listeAfficher.Add(AfficherTexte(taille, cut2));
             }
             else { listeAfficher.Add(cut2); }
-            return String.Join("-</br>", listeAfficher.ToArray());
             return String.Join("-<br>", listeAfficher.ToArray());
         }
         public void AfficherCarte(Carte carte)
@@ -77,16 +76,6 @@ namespace App
             else { txtCarteContenu.Text = carte.Text; }
 
             //Afficher les réponses possibles    
-            if (carte.Rep1.Text.Length > 25)
-            {
-                btnReponse1.Text = AfficherTexte(25, carte.Rep1.Text);
-            }
-            else { btnReponse1.Text = carte.Rep1.Text; }
-            if (carte.Rep2.Text.Length > 25)
-            {
-                btnReponse2.Text = AfficherTexte(25, carte.Rep2.Text);
-            }
-            else { btnReponse2.Text = carte.Rep2.Text; }
              btnReponse1.Text = carte.Rep1.Text; 
              btnReponse2.Text = carte.Rep2.Text;
         }
@@ -547,11 +536,10 @@ namespace App
                 Carte carte = CarteParmiEvent();
                 if (carte != null) { return carte; }
             }
-                              
+
 
             // si date spéciale : début évenement
             Evenement evenement = Program.MaPartie.TestDebutEvent();
-            /*Evenement evenement = Program.MaPartie.TestDebutEvent();
             if (evenement != null)
             {
                 //il s'agit de Vacances 
@@ -560,8 +548,7 @@ namespace App
                 else
                 {
                     //il s'agit d'un event : on récupère un certain nombre de cartes de cet event
-                    DeterminerCartesEvent(evenement);
-                    return CarteParmiEvent();
+                  
                     if ((evenement.Id != 8) || (evenement.Id != 10)) // event pas fini encore
                     {
                         //il s'agit d'un event : on récupère un certain nombre de cartes de cet event
@@ -571,14 +558,8 @@ namespace App
 
                 }
             }
-            else
-            {
-                // nombre de jour augmente de 1
-                Program.MaPartie.VieActuelle.NbJour++;
-                MajNbJour();
-            // else {
-            */
-            // else { quan don sera sur qu'un event est retrouné quand il en arrive un
+            
+            // else { quand on sera sur qu'un event est retrouné quand il en arrive un
 
                 // si carte à venir : 1 chance sur 3
                 if ((carteAVenir.Count != 0) && (random.Next(101) > 66))

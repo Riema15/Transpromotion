@@ -33,7 +33,7 @@ CREATE TABLE `carte` (
   `carte_num_event` int(11) NOT NULL,
   `pers_id` int(11) NOT NULL,
   `carte_txt` text COLLATE utf8_unicode_ci NOT NULL,
-  `rep_i1` int(11) NOT NULL,
+  `rep_id1` int(11) NOT NULL,
   `rep_id2` int(11) NOT NULL,
   `carte_obj` varchar(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -151,7 +151,7 @@ CREATE TABLE `reponse` (
 ALTER TABLE `carte`
   ADD PRIMARY KEY (`carte_id`),
   ADD KEY `Personnage` (`pers_id`),
-  ADD KEY `Rep1` (`rep_i1`),
+  ADD KEY `Rep1` (`rep_id1`),
   ADD KEY `Rep2` (`rep_id2`);
 
 --
@@ -205,7 +205,7 @@ ALTER TABLE `reponse`
 --
 ALTER TABLE `carte`
   ADD CONSTRAINT `carte_ibfk_2` FOREIGN KEY (`pers_id`) REFERENCES `personnage` (`pers_id`),
-  ADD CONSTRAINT `carte_ibfk_3` FOREIGN KEY (`rep_i1`) REFERENCES `reponse` (`rep_id`),
+  ADD CONSTRAINT `carte_ibfk_3` FOREIGN KEY (`rep_id1`) REFERENCES `reponse` (`rep_id`),
   ADD CONSTRAINT `carte_ibfk_4` FOREIGN KEY (`rep_id2`) REFERENCES `reponse` (`rep_id`);
 COMMIT;
 

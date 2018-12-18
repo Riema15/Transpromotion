@@ -8,9 +8,9 @@
     <id name="Id" column="mort_id" type="int">
       <generator class="native"></generator>
     </id>
+
     <property name="Nom" column="mort_nom" not-null="true"/>
     <property name="Image" column="mort_image" not-null="true"/>
-  
-  </class>
 
+  </class>
 </hibernate-mapping>

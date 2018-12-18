@@ -972,7 +972,7 @@ INSERT INTO `evenement` (`event_id`, `event_nom`, `event_jour`, `event_nbjour`) 
 (101, 'Toussaint', 47, 9),
 (102, 'Noël', 105, 17);
 
-INSERT INTO `carte` (`carte_id`, `carte_num_event`, `pers_id`, `carte_txt`, `rep_i1`, `rep_id2`, `carte_obj`) VALUES
+INSERT INTO `carte` (`carte_id`, `carte_num_event`, `pers_id`, `carte_txt`, `rep_id1`, `rep_id2`, `carte_obj`) VALUES
 (1, 0, 30, 'Bienvenue, bienvenue !', 1, 2, ''),
 (2, -100, 30, 'Bienvenue à l\'ENSC ! Voici votre badge ! Surtout, ne le perdez pas !', 3, 4, ''),
 (3, -100, 30, 'Ne le prêtez pas non plus ! Il faut que l\'ayez toujours sur vous. Compris ? Toujours. TOUJOURS.', 5, 6, ''),
