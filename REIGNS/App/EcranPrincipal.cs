@@ -17,6 +17,7 @@ namespace App
     /// AJOUTER LES NUM DE CARTES MANQUANTS
     /// GESTION ET UTILISATION DES OBJETS
     /// 
+  
 
 
     public partial class EcranPrincipal : UserControl
@@ -36,8 +37,11 @@ namespace App
             listeBtnObjet = new List<Button> { btnObjet0, btnObjet1, btnObjet2, btnObjet3, btnObjet4, btnObjet5, btnObjet6, btnObjet7 };
             carteAVenir = new List<Carte>();
             txtNbJour.Text = 0.ToString();
+            carteTourSuivant = null;
+            valNbJour.Text = 0.ToString();
             txtNomCycle.Text = Program.MaPartie.VieActuelle.Nom;
             cartesEvent = new List<Carte>();
+            EffacerFait();
 
             carteActuelle = ChoisirCarte();
 
@@ -60,6 +64,7 @@ namespace App
             }
             else { listeAfficher.Add(cut2); }
             return String.Join("-</br>", listeAfficher.ToArray());
+            return String.Join("-<br>", listeAfficher.ToArray());
         }
         public void AfficherCarte(Carte carte)
         {
@@ -82,6 +87,8 @@ namespace App
                 btnReponse2.Text = AfficherTexte(25, carte.Rep2.Text);
             }
             else { btnReponse2.Text = carte.Rep2.Text; }
+             btnReponse1.Text = carte.Rep1.Text; 
+             btnReponse2.Text = carte.Rep2.Text;
         }
 
         public void AfficherJauge()
@@ -161,6 +168,7 @@ namespace App
         // Fonctions utiles
 
         public Carte TestJaugeMort()
+        public int TestJaugeMort()
         {
             int idMort = Program.MaPartie.TestJaugeMort();
             if (idMort != -1)
@@ -169,6 +177,7 @@ namespace App
 
                 if (((idMort == 384)||(idMort==392)) && (Program.MaPartie.VieActuelle.Ami == true)) { carteTourSuivant = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 439);  }
                 return ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
+                return (idMort);
             }
             return null;
         }
@@ -413,6 +422,7 @@ namespace App
 
             // Test de Fait de cogniticien
             if (rep.FaitId != -1)
+            if (rep.FaitId != 0)
             {
                 if (Program.MaPartie.Faits[rep.FaitId].Actif == false)
                 {
@@ -464,12 +474,14 @@ namespace App
 
             // La carte suivant immédiatement
             if (rep.CarteSuivante != -1)
+            if (rep.CarteSuivante != 0)
             {
                 carteActuelle =  ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
                 return;
             }
 
             if (rep.DebutEvent!=-1)
+            if (rep.DebutEvent!=0)
             {
                 DeterminerCartesEvent(((List<Evenement>)Program.MaPartie.Events).Find(x => x.Id == rep.DebutEvent));
 
@@ -478,8 +490,11 @@ namespace App
             // Test de mort (Jauge)
             Carte carteJaugeMort = TestJaugeMort();
             if (carteJaugeMort != null)
+            int idMort = TestJaugeMort();
+            if (idMort != -1)
             {
                 carteActuelle = carteJaugeMort;
+                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
                 return;
             }
 
@@ -551,8 +566,10 @@ namespace App
                 if (carte != null) { return carte; }
             }
                               
+
             // si date spéciale : début évenement
             Evenement evenement = Program.MaPartie.TestDebutEvent();
+            /*Evenement evenement = Program.MaPartie.TestDebutEvent();
             if (evenement != null)
             {
                 //il s'agit de Vacances 
@@ -578,6 +595,8 @@ namespace App
                 Program.MaPartie.VieActuelle.NbJour++;
                 MajNbJour();
             // else {
+            */
+            // else { quan don sera sur qu'un event est retrouné quand il en arrive un
 
                 // si carte à venir : 1 chance sur 3
                 if ((carteAVenir.Count != 0) && (random.Next(101) > 66))
@@ -600,6 +619,9 @@ namespace App
 
             // sinon aléatoire
             return Program.MaPartie.CartesNoEvent[random.Next(Program.MaPartie.CartesNoEvent.Count())];
+            int count = (Program.MaPartie.CartesNoEvent.Count());
+            int x = random.Next(count);
+            return Program.MaPartie.CartesNoEvent[x];
 
             //}
         }
@@ -639,11 +661,13 @@ namespace App
                 carteActuelle = carteTourSuivant;
                 carteTourSuivant = null;
             }
+
             AfficherCarte(carteActuelle);
         }
 
         private void btnReponse2_Click(object sender, EventArgs e)
         {
+            
             if (carteTourSuivant == null)
             { EffetReponse(carteActuelle.Rep1); }
             else
@@ -651,6 +675,7 @@ namespace App
                 carteActuelle = carteTourSuivant;
                 carteTourSuivant = null;
             }
+
             // Afficher cette nouvelle carte
             AfficherCarte(carteActuelle);
         }
