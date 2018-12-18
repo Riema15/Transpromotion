@@ -234,10 +234,9 @@ namespace App
                 // Nouvel Objet = "+id"
                 if (chgtObjetChar[0] == '+')
                 {
-                    for (int i = 0; i < chgtObjetChar.Length; i++)
+                    for (int i = 1; i < chgtObjetChar.Length; i++)
                     {
-                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i + 1])) * ((int)Math.Pow(10, i));
-                        i++;
+                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * ((int)Math.Pow(10, i-1));
                     }
                     if (Program.MaPartie.Objets[idObjet].Actif != true)
                     {
@@ -252,8 +251,7 @@ namespace App
                 {
                     for (int i = 0; i < chgtObjetChar.Length; i++)
                     {
-                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i + 1])) * ((int)Math.Pow(10, i));
-                        i++;
+                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * ((int)Math.Pow(10, i-1));
                     }
                     Program.MaPartie.Objets[idObjet].Actif = false;
                     EffacerObjet(Program.MaPartie.Objets[idObjet]);
@@ -454,11 +452,9 @@ namespace App
             }
 
             // La carte suivant immédiatement
-            Console.WriteLine(rep.CarteSuivante + " " + (rep.CarteSuivante != 0));
             if (rep.CarteSuivante != 0)
             {
-                carteActuelle =  ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
-         
+                carteActuelle =  ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);         
                 return;
             }
             
@@ -520,7 +516,9 @@ namespace App
                 }
            }
 
+            Console.WriteLine("ok");
             carteActuelle = ChoisirCarte();
+            Console.WriteLine(carteActuelle.Id);
         }
 
         public Carte ChoisirCarte()
@@ -534,7 +532,7 @@ namespace App
                 btnReponse2.Text = "Bonne journée !";
             }
 
-            // si scénraio en cours
+            // si scénario en cours
             if (cartesEvent.Count != 0)
             {
                 Carte carte = CarteParmiEvent();
