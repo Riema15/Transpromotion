@@ -11,7 +11,9 @@ namespace DAL
     {
         public IList<Objet> GetAll()
         {
+            Console.WriteLine(Session.Query<Objet>().ToList());
             Console.WriteLine(Session.Query<Objet>());
+            Console.WriteLine(Session.ToString());
             return Session.Query<Objet>().ToList();
         }
 

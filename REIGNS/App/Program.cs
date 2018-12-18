@@ -16,7 +16,7 @@ namespace App
         
         public static Partie MaPartie = new Partie();
 
-        /*
+        
         public static CarteRepository carteRep;
         public static ReponseRepository reponseRep;
         public static FaitRepository faitRep;
@@ -25,13 +25,13 @@ namespace App
         public static ObjetRepository objetRep;
         public static PersonnageRepository persoRep;
         public static EvenementRepository eventRep;
-        */
+        
 
 
         static void Main(string[] args)
         {
 
-            /*
+            
             // initialiser les repository
             carteRep = new CarteRepository();
             reponseRep = new ReponseRepository();
@@ -51,7 +51,27 @@ namespace App
             MaPartie.CartesNoEvent = carteRep.GetCarteNotEvent();
             MaPartie.Events = eventRep.GetAll();
 
-            /*
+            Console.WriteLine("Nb objet : "+MaPartie.Objets.Count());
+            Console.WriteLine("Nb fait : " + MaPartie.Faits.Count());
+            Console.WriteLine("Nb morts : " + MaPartie.Morts.Count());
+            Console.WriteLine("Nb cartes spe : " + MaPartie.CartesSpeciales.Count());
+            Console.WriteLine("Nb carte no event : " + MaPartie.CartesNoEvent.Count());
+            Console.WriteLine("Nb event : " + MaPartie.Events.Count());
+
+            Console.ReadKey();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+
+            Gestionnaire MonGestionnaire = new Gestionnaire();
+
+            Application.Run(MonGestionnaire);
+
+        }
+
+        public void LienBDD()
+        {
             Console.WriteLine("Exporting DB schema... ");
 
             Configuration cfg = new Configuration();
@@ -61,8 +81,10 @@ namespace App
 
             Console.WriteLine("Done!");
             Console.ReadKey();
-            */
-            /*
+        }
+        public void Lancement()
+        {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -70,9 +92,9 @@ namespace App
             Gestionnaire MonGestionnaire = new Gestionnaire();
 
             Application.Run(MonGestionnaire);
-            */
-
-            Console.WriteLine("Liste des faits :");
+        }
+        public void Test()
+        { Console.WriteLine("Liste des faits :");
             FaitRepository faitRep = new FaitRepository();
             Console.WriteLine(faitRep);
             IList<Fait> Faits = faitRep.GetAll();
@@ -120,7 +142,6 @@ namespace App
             }
             Console.WriteLine();
 
-            Console.ReadKey();
-        }
+            Console.ReadKey();}
     }
 }

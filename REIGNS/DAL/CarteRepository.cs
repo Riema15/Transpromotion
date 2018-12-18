@@ -17,13 +17,13 @@ namespace DAL
         public IList<Carte> GetCarteNotEvent()
         {
             IList<Carte> toutes = GetAll();
-            return (IList<Carte>) ((List<Carte>)toutes).FindAll(x => x.Id == -1);
+            return (IList<Carte>) ((List<Carte>)toutes).FindAll(x => x.NumEvent == -1);
         }
 
         public IList<Carte> GetCartesSpeciales()
         {
             IList<Carte> toutes = GetAll();
-            return (IList<Carte>)((List<Carte>)toutes).FindAll(x => x.Id == -100);
+            return (IList<Carte>)((List<Carte>)toutes).FindAll(x => x.NumEvent == -100);
         }
 
         public void Save(Carte carte)

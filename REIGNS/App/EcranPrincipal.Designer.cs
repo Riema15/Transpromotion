@@ -313,6 +313,7 @@
             this.imMoinsSous.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsSous.TabIndex = 30;
             this.imMoinsSous.TabStop = false;
+            this.imMoinsSous.Visible = false;
             // 
             // imPlusSous
             // 
@@ -323,6 +324,7 @@
             this.imPlusSous.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusSous.TabIndex = 29;
             this.imPlusSous.TabStop = false;
+            this.imPlusSous.Visible = false;
             // 
             // imMoinsScolaire
             // 
@@ -333,6 +335,7 @@
             this.imMoinsScolaire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsScolaire.TabIndex = 28;
             this.imMoinsScolaire.TabStop = false;
+            this.imMoinsScolaire.Visible = false;
             // 
             // imPlusScolaire
             // 
@@ -343,6 +346,7 @@
             this.imPlusScolaire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusScolaire.TabIndex = 27;
             this.imPlusScolaire.TabStop = false;
+            this.imPlusScolaire.Visible = false;
             // 
             // imMoinsSocial
             // 
@@ -353,6 +357,7 @@
             this.imMoinsSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsSocial.TabIndex = 26;
             this.imMoinsSocial.TabStop = false;
+            this.imMoinsSocial.Visible = false;
             // 
             // imPlusSocial
             // 
@@ -363,6 +368,7 @@
             this.imPlusSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusSocial.TabIndex = 25;
             this.imPlusSocial.TabStop = false;
+            this.imPlusSocial.Visible = false;
             // 
             // imMoinsSante
             // 
@@ -373,6 +379,7 @@
             this.imMoinsSante.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imMoinsSante.TabIndex = 24;
             this.imMoinsSante.TabStop = false;
+            this.imMoinsSante.Visible = false;
             // 
             // imPlusSante
             // 
@@ -383,6 +390,7 @@
             this.imPlusSante.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imPlusSante.TabIndex = 23;
             this.imPlusSante.TabStop = false;
+            this.imPlusSante.Visible = false;
             // 
             // EcranPrincipal
             // 

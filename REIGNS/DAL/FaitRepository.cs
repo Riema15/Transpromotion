@@ -10,8 +10,10 @@ namespace DAL
     public class FaitRepository : Repository
     {
         public IList<Fait> GetAll()
-        {
+        {            
+            Console.WriteLine(Session.Query<Fait>().ToList()+" "+ Session.Query<Fait>().ToList().LongCount());
             Console.WriteLine(Session.Query<Fait>());
+            Console.WriteLine(Session.ToString());
             return Session.Query<Fait>().ToList();
         }
 
