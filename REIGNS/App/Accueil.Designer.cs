@@ -37,12 +37,14 @@
             this.valNbVie = new System.Windows.Forms.Label();
             this.valNbFait = new System.Windows.Forms.Label();
             this.valNbMort = new System.Windows.Forms.Label();
+            this.txtSousTitre = new System.Windows.Forms.Label();
+            this.txtDefi = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnJouer
             // 
             this.btnJouer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJouer.Location = new System.Drawing.Point(295, 199);
+            this.btnJouer.Location = new System.Drawing.Point(293, 138);
             this.btnJouer.Name = "btnJouer";
             this.btnJouer.Size = new System.Drawing.Size(116, 49);
             this.btnJouer.TabIndex = 0;
@@ -54,11 +56,12 @@
             // 
             this.txtAccueil.AutoSize = true;
             this.txtAccueil.Font = new System.Drawing.Font("Monotype Corsiva", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAccueil.Location = new System.Drawing.Point(31, 74);
+            this.txtAccueil.Location = new System.Drawing.Point(169, 27);
             this.txtAccueil.Name = "txtAccueil";
-            this.txtAccueil.Size = new System.Drawing.Size(671, 97);
+            this.txtAccueil.Size = new System.Drawing.Size(353, 97);
             this.txtAccueil.TabIndex = 1;
-            this.txtAccueil.Text = "Reigns version ENSC";
+            this.txtAccueil.Text = "Graduated";
+            this.txtAccueil.Click += new System.EventHandler(this.txtAccueil_Click);
             // 
             // txtNomsGroupe
             // 
@@ -72,7 +75,7 @@
             // txtNbVie
             // 
             this.txtNbVie.AutoSize = true;
-            this.txtNbVie.Location = new System.Drawing.Point(109, 286);
+            this.txtNbVie.Location = new System.Drawing.Point(136, 250);
             this.txtNbVie.Name = "txtNbVie";
             this.txtNbVie.Size = new System.Drawing.Size(165, 17);
             this.txtNbVie.TabIndex = 3;
@@ -81,7 +84,7 @@
             // txtNbMort
             // 
             this.txtNbMort.AutoSize = true;
-            this.txtNbMort.Location = new System.Drawing.Point(109, 326);
+            this.txtNbMort.Location = new System.Drawing.Point(136, 290);
             this.txtNbMort.Name = "txtNbMort";
             this.txtNbMort.Size = new System.Drawing.Size(207, 17);
             this.txtNbMort.TabIndex = 4;
@@ -90,7 +93,7 @@
             // txtNbFait
             // 
             this.txtNbFait.AutoSize = true;
-            this.txtNbFait.Location = new System.Drawing.Point(109, 306);
+            this.txtNbFait.Location = new System.Drawing.Point(136, 270);
             this.txtNbFait.Name = "txtNbFait";
             this.txtNbFait.Size = new System.Drawing.Size(256, 17);
             this.txtNbFait.TabIndex = 5;
@@ -99,7 +102,7 @@
             // valNbVie
             // 
             this.valNbVie.AutoSize = true;
-            this.valNbVie.Location = new System.Drawing.Point(280, 286);
+            this.valNbVie.Location = new System.Drawing.Point(307, 250);
             this.valNbVie.Name = "valNbVie";
             this.valNbVie.Size = new System.Drawing.Size(16, 17);
             this.valNbVie.TabIndex = 6;
@@ -108,7 +111,7 @@
             // valNbFait
             // 
             this.valNbFait.AutoSize = true;
-            this.valNbFait.Location = new System.Drawing.Point(371, 306);
+            this.valNbFait.Location = new System.Drawing.Point(398, 270);
             this.valNbFait.Name = "valNbFait";
             this.valNbFait.Size = new System.Drawing.Size(16, 17);
             this.valNbFait.TabIndex = 7;
@@ -117,16 +120,37 @@
             // valNbMort
             // 
             this.valNbMort.AutoSize = true;
-            this.valNbMort.Location = new System.Drawing.Point(322, 326);
+            this.valNbMort.Location = new System.Drawing.Point(349, 290);
             this.valNbMort.Name = "valNbMort";
             this.valNbMort.Size = new System.Drawing.Size(16, 17);
             this.valNbMort.TabIndex = 8;
             this.valNbMort.Text = "0";
             // 
+            // txtSousTitre
+            // 
+            this.txtSousTitre.AutoSize = true;
+            this.txtSousTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSousTitre.Location = new System.Drawing.Point(257, 205);
+            this.txtSousTitre.Name = "txtSousTitre";
+            this.txtSousTitre.Size = new System.Drawing.Size(192, 24);
+            this.txtSousTitre.TabIndex = 9;
+            this.txtSousTitre.Text = "Reigns version ENSC";
+            // 
+            // txtDefi
+            // 
+            this.txtDefi.AutoSize = true;
+            this.txtDefi.Location = new System.Drawing.Point(139, 348);
+            this.txtDefi.Name = "txtDefi";
+            this.txtDefi.Size = new System.Drawing.Size(319, 17);
+            this.txtDefi.TabIndex = 10;
+            this.txtDefi.Text = "Et si vous essayiez d\'avoir ce fait de cogniticien : ";
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtDefi);
+            this.Controls.Add(this.txtSousTitre);
             this.Controls.Add(this.valNbMort);
             this.Controls.Add(this.valNbFait);
             this.Controls.Add(this.valNbVie);
@@ -154,5 +178,7 @@
         private System.Windows.Forms.Label valNbVie;
         private System.Windows.Forms.Label valNbFait;
         private System.Windows.Forms.Label valNbMort;
+        private System.Windows.Forms.Label txtSousTitre;
+        private System.Windows.Forms.Label txtDefi;
     }
 }

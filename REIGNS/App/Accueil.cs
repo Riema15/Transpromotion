@@ -14,14 +14,24 @@ namespace App
 {
     public partial class Accueil : UserControl
     {
-
+        Random random = new Random();
 
         public Accueil()
         {
+
             InitializeComponent();
             valNbFait.Text = ""+((List<Fait>)Program.MaPartie.Faits).Count(x => x.Actif == true);
             valNbMort.Text = "" + ((List<Mort>)Program.MaPartie.Morts).Count(x => x.Actif == true);
             valNbVie.Text = "" + Program.MaPartie.NbVie;
+
+            List<Fait> liste = ((List<Fait>)Program.MaPartie.Faits).FindAll(x => x.Actif == false);
+
+            if (liste.Count > 1)
+            {
+                Fait fait = liste[random.Next(liste.Count - 1)];
+                txtDefi.Text += fait.Nom + " : " + fait.Description;
+            }
+            else { txtDefi.Text = ""; }
 
         }
 
@@ -31,6 +41,10 @@ namespace App
             EcranPrincipal userControlEcranPrinp = new EcranPrincipal();
             ((Gestionnaire)this.Parent).ChangeControl(userControlEcranPrinp);
         }
-        
+
+        private void txtAccueil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
