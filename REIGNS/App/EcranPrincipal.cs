@@ -317,14 +317,14 @@ namespace App
         
         private void DeterminerCartesEvent(Evenement evenement)
         {
-            // choisir X cartes DIFFERENTS parmi les cartes de cet event
+            // choisir X cartes DIFFERENTES parmi les cartes de cet event
 
             cartesEvent.Clear();
             List<Carte> listeCartesConcernees = new List<Carte>(evenement.CartesConcernees);
             int xRandom;
             for (int i =0; i< evenement.NbCarteTirer; i++)
             {
-                xRandom = random.Next(listeCartesConcernees.Count);
+                xRandom = random.Next(listeCartesConcernees.Count-1);
                 cartesEvent.Add(listeCartesConcernees[xRandom]);
                 listeCartesConcernees.RemoveAt(xRandom);
             }
@@ -434,7 +434,7 @@ namespace App
                 bool continuer = true;
                 // Pour chaque objet
                 string[] splitEsperluette = rep.ChgtObjet.Split(new char[] { '&' });
-                Console.WriteLine("rep.GhgtObjet = "+rep.ChgtObjet+"\nComptes des différents objets à modifier : "+splitEsperluette.Count());
+                Console.WriteLine("rep.ChgtObjet = "+rep.ChgtObjet+"\nComptes des différents objets à modifier : "+splitEsperluette.Count());
                 foreach (string chgtObjetsString in splitEsperluette)
                 {
                     continuer = true;
@@ -465,7 +465,7 @@ namespace App
             
             if (idMort != -1)
             {                
-                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
+                carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == idMort);
                 espion_Carte_Suivante = 3;
                 return;
             }
