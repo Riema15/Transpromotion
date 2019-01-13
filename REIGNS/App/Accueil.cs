@@ -19,19 +19,18 @@ namespace App
         public Accueil()
         {
             InitializeComponent();
-           
+            valNbFait.Text = ""+((List<Fait>)Program.MaPartie.Faits).Count(x => x.Actif == true);
+            valNbMort.Text = "" + ((List<Mort>)Program.MaPartie.Morts).Count(x => x.Actif == true);
+            valNbVie.Text = "" + Program.MaPartie.NbVie;
+
         }
 
         private void btnJouer_Click(object sender, EventArgs e)
         {
-            Program.MaPartie.VieActuelle = new Cycle();
-            Program.MaPartie.VieActuelle.Effets = Program.effetRep.GetAll();
-            foreach (Effet ef in Program.MaPartie.VieActuelle.Effets)
-            {
-                Console.WriteLine(ef.Nom);
-            }
+            Program.MaPartie.NouveauCycle(Program.effetRep.GetAll());
             EcranPrincipal userControlEcranPrinp = new EcranPrincipal();
             ((Gestionnaire)this.Parent).ChangeControl(userControlEcranPrinp);
         }
+        
     }
 }

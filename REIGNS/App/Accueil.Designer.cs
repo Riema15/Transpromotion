@@ -30,12 +30,19 @@
         {
             this.btnJouer = new System.Windows.Forms.Button();
             this.txtAccueil = new System.Windows.Forms.Label();
+            this.txtNomsGroupe = new System.Windows.Forms.Label();
+            this.txtNbVie = new System.Windows.Forms.Label();
+            this.txtNbMort = new System.Windows.Forms.Label();
+            this.txtNbFait = new System.Windows.Forms.Label();
+            this.valNbVie = new System.Windows.Forms.Label();
+            this.valNbFait = new System.Windows.Forms.Label();
+            this.valNbMort = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnJouer
             // 
             this.btnJouer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJouer.Location = new System.Drawing.Point(295, 262);
+            this.btnJouer.Location = new System.Drawing.Point(295, 199);
             this.btnJouer.Name = "btnJouer";
             this.btnJouer.Size = new System.Drawing.Size(116, 49);
             this.btnJouer.TabIndex = 0;
@@ -47,20 +54,90 @@
             // 
             this.txtAccueil.AutoSize = true;
             this.txtAccueil.Font = new System.Drawing.Font("Monotype Corsiva", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAccueil.Location = new System.Drawing.Point(31, 109);
+            this.txtAccueil.Location = new System.Drawing.Point(31, 74);
             this.txtAccueil.Name = "txtAccueil";
             this.txtAccueil.Size = new System.Drawing.Size(671, 97);
             this.txtAccueil.TabIndex = 1;
             this.txtAccueil.Text = "Reigns version ENSC";
             // 
+            // txtNomsGroupe
+            // 
+            this.txtNomsGroupe.AutoSize = true;
+            this.txtNomsGroupe.Location = new System.Drawing.Point(223, 438);
+            this.txtNomsGroupe.Name = "txtNomsGroupe";
+            this.txtNomsGroupe.Size = new System.Drawing.Size(485, 17);
+            this.txtNomsGroupe.TabIndex = 2;
+            this.txtNomsGroupe.Text = "Créé par M.Gibert, M.Leleu, S.Rouveure, L.Vannel, A.De Barros, J.Vauchez";
+            // 
+            // txtNbVie
+            // 
+            this.txtNbVie.AutoSize = true;
+            this.txtNbVie.Location = new System.Drawing.Point(109, 286);
+            this.txtNbVie.Name = "txtNbVie";
+            this.txtNbVie.Size = new System.Drawing.Size(165, 17);
+            this.txtNbVie.TabIndex = 3;
+            this.txtNbVie.Text = "Nombre de vies jouées : ";
+            // 
+            // txtNbMort
+            // 
+            this.txtNbMort.AutoSize = true;
+            this.txtNbMort.Location = new System.Drawing.Point(109, 326);
+            this.txtNbMort.Name = "txtNbMort";
+            this.txtNbMort.Size = new System.Drawing.Size(207, 17);
+            this.txtNbMort.TabIndex = 4;
+            this.txtNbMort.Text = "Nombre de morts découvertes :";
+            // 
+            // txtNbFait
+            // 
+            this.txtNbFait.AutoSize = true;
+            this.txtNbFait.Location = new System.Drawing.Point(109, 306);
+            this.txtNbFait.Name = "txtNbFait";
+            this.txtNbFait.Size = new System.Drawing.Size(256, 17);
+            this.txtNbFait.TabIndex = 5;
+            this.txtNbFait.Text = "Nombre de faits de cogniticien réussis :";
+            // 
+            // valNbVie
+            // 
+            this.valNbVie.AutoSize = true;
+            this.valNbVie.Location = new System.Drawing.Point(280, 286);
+            this.valNbVie.Name = "valNbVie";
+            this.valNbVie.Size = new System.Drawing.Size(16, 17);
+            this.valNbVie.TabIndex = 6;
+            this.valNbVie.Text = "0";
+            // 
+            // valNbFait
+            // 
+            this.valNbFait.AutoSize = true;
+            this.valNbFait.Location = new System.Drawing.Point(371, 306);
+            this.valNbFait.Name = "valNbFait";
+            this.valNbFait.Size = new System.Drawing.Size(16, 17);
+            this.valNbFait.TabIndex = 7;
+            this.valNbFait.Text = "0";
+            // 
+            // valNbMort
+            // 
+            this.valNbMort.AutoSize = true;
+            this.valNbMort.Location = new System.Drawing.Point(322, 326);
+            this.valNbMort.Name = "valNbMort";
+            this.valNbMort.Size = new System.Drawing.Size(16, 17);
+            this.valNbMort.TabIndex = 8;
+            this.valNbMort.Text = "0";
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.valNbMort);
+            this.Controls.Add(this.valNbFait);
+            this.Controls.Add(this.valNbVie);
+            this.Controls.Add(this.txtNbFait);
+            this.Controls.Add(this.txtNbMort);
+            this.Controls.Add(this.txtNbVie);
+            this.Controls.Add(this.txtNomsGroupe);
             this.Controls.Add(this.txtAccueil);
             this.Controls.Add(this.btnJouer);
             this.Name = "Accueil";
-            this.Size = new System.Drawing.Size(717, 474);
+            this.Size = new System.Drawing.Size(724, 474);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,5 +147,12 @@
 
         private System.Windows.Forms.Button btnJouer;
         private System.Windows.Forms.Label txtAccueil;
+        private System.Windows.Forms.Label txtNomsGroupe;
+        private System.Windows.Forms.Label txtNbVie;
+        private System.Windows.Forms.Label txtNbMort;
+        private System.Windows.Forms.Label txtNbFait;
+        private System.Windows.Forms.Label valNbVie;
+        private System.Windows.Forms.Label valNbFait;
+        private System.Windows.Forms.Label valNbMort;
     }
 }

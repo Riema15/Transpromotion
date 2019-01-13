@@ -11,15 +11,7 @@ using DAL;
 using Domain;
 
 namespace App
-{
-
-    /// RESTE A FAIRE SURTOUT
-    /// AJOUTER LES NUM DE CARTES MANQUANTS
-    /// GESTION ET UTILISATION DES OBJETS
-    /// 
-  
-
-
+{   
     public partial class EcranPrincipal : UserControl
     {
         private Carte carteActuelle;
@@ -28,7 +20,7 @@ namespace App
         private List<Button> listeBtnObjet; 
         private List<Carte> cartesEvent;
 
-
+        private int espion_Carte_Suivante;
         public Carte carteTourSuivant;
 
         public EcranPrincipal()
@@ -73,6 +65,9 @@ namespace App
             //Afficher les réponses possibles    
              btnReponse1.Text = carte.Rep1.Text; 
              btnReponse2.Text = carte.Rep2.Text;
+
+            // Control
+            Console.WriteLine("Carte n° " + carte.Id + ", reponses : "+carte.Rep1.Id + ", " + carte.Rep2.Id+"\nRep 1 carte suivante : "+carte.Rep1.CarteSuivante+"\nrep2 carte suivante : "+carte.Rep2.CarteSuivante);
         }
 
         public void AfficherJauge()
@@ -149,6 +144,18 @@ namespace App
             valNbJour.Text = Program.MaPartie.VieActuelle.NbJour.ToString();
         }
 
+        public int TabCharToInt(char[] tabChar)
+        {
+            int x = 0;
+            int j = 0;
+            for (int i = tabChar.Length - 1; i >= 0; i--)
+            {
+                x += ((int)tabChar[i]) * ((int)Math.Pow(10, j));
+                j++;
+            }
+            return x;
+        }
+
         // Fonctions utiles
         
         public int TestJaugeMort()
@@ -223,14 +230,18 @@ namespace App
             {
                 int idObjet = 0;
                 int j = 0;
-                // Nouvel Objet = "+id"
+
+                // récupérer l'id de l'Objet en question
+                for (int i = chgtObjetChar.Length - 1; i > 0; i--)
+                {
+                    idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * (int)Math.Pow(10, j);
+                    j++;
+                }
+
+                // Nouvel Objet 
                 if (chgtObjetChar[0] == '+')
                 {
-                    for (int i = chgtObjetChar.Length-1; i > 0; i--)
-                    {
-                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * (int) Math.Pow(10,j) ;
-                        j++;
-                    }
+                    // si il n'est pas déjà présent
                     if (((List<Objet>)Program.MaPartie.Objets).Find(x  => x.Id==idObjet).Actif != true)
                     {
                         ((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet).Actif = true;
@@ -239,25 +250,16 @@ namespace App
                     }
                     else { return false; }
                 }
-                // Perdre un objet = "-id"
+                // Perdre un objet 
                 if (chgtObjetChar[0] == '-')
                 {
-                    for (int i = chgtObjetChar.Length-1; i > 0; i--)
-                    {
-                        idObjet += ((int)char.GetNumericValue(chgtObjetChar[i])) * (int)Math.Pow(10, j);
-                        j++;
-
-                    }
-                    if (((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet).Actif == false)
-                    {
-                        // si on ne l'avait déjà pas
-                        return false;
-                    }
-                    else
+                    // si on l'avait seulement !
+                    if (((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet).Actif != false)
                     {
                         ((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet).Actif = false;
                         EffacerObjet(((List<Objet>)Program.MaPartie.Objets).Find(x => x.Id == idObjet));
                     }
+                    else { return false; }
                 }
                
             }
@@ -352,25 +354,19 @@ namespace App
                     Mourir();
                 }
 
-                
+                // il est possibe d'utiliser un objet
                 if (carteActuelle.ObjetPossible != "")
                 {
                     // récupérer tous les objets possibles dans un tableau de string
-                    string[] split = carteActuelle.ObjetPossible.Split(new char[] { '&' });
+                    string[] splitObjet = carteActuelle.ObjetPossible.Split(new char[] { '&' });
                     //Pour chaque objet possible
-                    foreach (string objetPossibleString in split)
+                    foreach (string objetPossibleString in splitObjet)
                     {
-                        char[] objetPossibleChar = objetPossibleString.ToCharArray();
-                        if (objetPossibleChar[0] == idObjet)
+                        string[] split = objetPossibleString.Split(new char[] { ','});
+                        if (TabCharToInt(split[0].ToCharArray()) == idObjet)
                         {
                             // l'objet a une application sur cette carte !
-                            int idCarte = 0;
-                            int j = 0;
-                            for (int i = objetPossibleChar.Length-1; i>0 ; i--)
-                            {
-                                idCarte += ((int)objetPossibleChar[i]) * ((int)Math.Pow(10,j));
-                                j++;
-                            }
+                            int idCarte = TabCharToInt(split[1].ToCharArray());
                             return idCarte;
                         }
                     }
@@ -391,6 +387,7 @@ namespace App
                 carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
                 ((List<Mort>)Program.MaPartie.Morts).Find(x => x.Id == rep.MortId).Actif = true;
                 Mourir();
+                espion_Carte_Suivante = 1;
                 return;
             }
 
@@ -437,24 +434,31 @@ namespace App
                 bool continuer = true;
                 // Pour chaque objet
                 string[] splitEsperluette = rep.ChgtObjet.Split(new char[] { '&' });
-                Console.WriteLine(splitEsperluette.Count());
+                Console.WriteLine("rep.GhgtObjet = "+rep.ChgtObjet+"\nComptes des différents objets à modifier : "+splitEsperluette.Count());
                 foreach (string chgtObjetsString in splitEsperluette)
                 {
+                    continuer = true;
                     string[] splitVirgule = chgtObjetsString.Split(new char[] { ',' });
                     foreach (string chgtObjetString in splitVirgule)
                     {
-                        char[] chgtObjetChar = chgtObjetString.ToCharArray();
-                        continuer = ChangerObjet(chgtObjetChar);
-                        if (continuer == false) { splitVirgule = new string[0]; }
+                        if (continuer == true)
+                        {
+                            Console.Write("chgtObjetString = " + chgtObjetString);
+                            char[] chgtObjetChar = chgtObjetString.ToCharArray();
+                            continuer = ChangerObjet(chgtObjetChar);
+                        }
+                        Console.WriteLine(", continuer = " + continuer);
                     }
                 }
-            }
-
+            }            
             
-            
+            //carte qu lance un event
             if (rep.DebutEvent!=0)
             {
                 DeterminerCartesEvent(((List<Evenement>)Program.MaPartie.Events).Find(x => x.Id == rep.DebutEvent));
+                carteActuelle = CarteParmiEvent();
+                espion_Carte_Suivante = 2;
+                return;
             }
             // Test de mort (Jauge)
             int idMort = TestJaugeMort();
@@ -462,6 +466,7 @@ namespace App
             if (idMort != -1)
             {                
                 carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
+                espion_Carte_Suivante = 3;
                 return;
             }
 
@@ -469,6 +474,7 @@ namespace App
             if (rep.CarteSuivante != 0)
             {
                 carteActuelle = ((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == rep.CarteSuivante);
+                espion_Carte_Suivante = 4;
                 return;
             }
 
@@ -515,7 +521,9 @@ namespace App
                         carteAVenir.Add(((List<Carte>)Program.MaPartie.CartesSpeciales).Find(x => x.Id == 102));
                     }
                 }
-           }            
+           }
+
+            espion_Carte_Suivante = 5;
             carteActuelle = ChoisirCarte();
         }
 
@@ -529,7 +537,7 @@ namespace App
             if (Program.MaPartie.VieActuelle.NbJour==136)
             {
                 Mourir();
-                txtCarteContenu.Text = "Bravo, vous êtes arrivez à la fin du jeu ! <br /> Vous pouvez nous soutenir en nous payant un café ! Ou en nous proposant de nouvelles idées... <br /> Pour nous contacter : mgibert001@ensc.fr";
+                txtCarteContenu.Text = "Bravo, vous êtes arrivez à la fin du jeu ! Vous pouvez nous soutenir en nous payant un café ! Ou en nous proposant de nouvelles idées... Pour nous contacter : mgibert001@ensc.fr";
                 btnReponse1.Text = "Merci d'avoir joué !";
                 btnReponse2.Text = "Bonne journée !";
             }
@@ -590,13 +598,11 @@ namespace App
                 int idObjet = -1;
                 foreach (Objet objet in Program.MaPartie.Objets)
                 {
-                    Console.WriteLine("Objet :" + objet.Nom + " Nom :" + txtBtn + "; bool=" + (txtBtn == objet.Nom));
+                    //Console.WriteLine("Objet :" + objet.Nom + " Nom :" + txtBtn + "; bool=" + (txtBtn == objet.Nom));
                     if (txtBtn == objet.Nom) { idObjet = objet.Id; }
                 }
-                Console.WriteLine("objetId :"+idObjet);
                 // récupérer l'id de la carte suivante si l'objet peut être utilisé
                 int idCarte = UtiliserObjet(idObjet);
-                Console.WriteLine("idCarte"+idCarte);
                 // Si utilisable
                 if (idCarte != -1)
                 {
@@ -620,7 +626,7 @@ namespace App
                 carteActuelle = carteTourSuivant;
                 carteTourSuivant = null;
             }
-
+            Console.WriteLine(espion_Carte_Suivante);
             AfficherCarte(carteActuelle);
         }
 
@@ -628,14 +634,17 @@ namespace App
         {
             
             if (carteTourSuivant == null)
-            { EffetReponse(carteActuelle.Rep1); }
+            { EffetReponse(carteActuelle.Rep2); }
             else
             {
                 carteActuelle = carteTourSuivant;
                 carteTourSuivant = null;
             }
 
+
+            Console.WriteLine(espion_Carte_Suivante);
             // Afficher cette nouvelle carte
+
             AfficherCarte(carteActuelle);
         }
 
@@ -652,13 +661,12 @@ namespace App
         private void btnRetour_Click(object sender, EventArgs e)
         {
             Accueil userControlAccueil = new Accueil();
-            Controls.Add(userControlAccueil);
+            ((Gestionnaire)this.Parent).ChangeControl(userControlAccueil);
         }
 
         private void btnObjet0_Click(object sender, EventArgs e)
         {
             EffetObjet(btnObjet0.Text);
-            Console.WriteLine(btnObjet0.Text);
         }
 
         private void btnObjet1_Click(object sender, EventArgs e)

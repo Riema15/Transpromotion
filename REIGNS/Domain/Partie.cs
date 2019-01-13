@@ -10,11 +10,9 @@ namespace Domain
         private int nbmAsso;
         private int nbmFamille;
         public int NbmAsso { get { return nbmAsso; } set { nbmAsso = value; } }
-        public int NbmFamille
-        {
-            get { return nbmFamille; }
-            set { nbmFamille = value; }
-        }
+        public int NbmFamille { get { return nbmFamille; } set { nbmFamille = value; } }
+
+        public int NbVie { get; set; }
 
         public IList<Domain.Fait> Faits { get; set; }
 
@@ -34,16 +32,24 @@ namespace Domain
         {
             NbmAsso = 0;
             NbmFamille = 0;
+            NbVie = 0;
             Faits = new List<Fait>();
             Morts = new List<Mort>();
             VieActuelle = new Cycle();
             Objets = new List<Objet>();
-
             Events = new List<Evenement>();
             CartesNoEvent = new List<Carte>();
             CartesSpeciales = new List<Carte>();
         }
         
+
+        public void NouveauCycle(IList<Effet> effets)
+        {
+            VieActuelle = new Cycle();
+            NbVie++;
+            VieActuelle.Effets = effets;
+        }
+
         // Selon le jour qu'on est, renvoie -1 (rien de spécial) ou un chiffre entre 0 et 12 (semestre 1 seulement) pour un event, et 100+nb Jours passés pour les vacances
         public Evenement TestDebutEvent()
         {
